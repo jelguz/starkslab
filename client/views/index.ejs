@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>        
+        <!-- META SECTION -->
+        <title>Stark's Lab</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+        <!-- EOF CSS INCLUDE -->                                    
+    </head>
+    <body>
+        <!-- START PAGE CONTAINER -->
+        <div class="page-container">
+            
+            <!-- START PAGE SIDEBAR -->
+            <div class="page-sidebar">
+                <!-- START X-NAVIGATION -->
+                <ul class="x-navigation">
+                    <li class="xn-logo">
+                        <a href="index.html">Stark's Lab</a>
+                        <a href="#" class="x-navigation-control"></a>
+                    </li>
+                    <li class="xn-profile">
+                        <a href="#" class="profile-mini">
+                            <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                        </a>
+                        <div class="profile">
+                            <div class="profile-image">
+                                <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                            </div>
+                            <div class="profile-data">
+                                <div class="profile-data-name">Echo Cristobal</div>
+                                <div class="profile-data-title">Developer/Designer</div>
+                            </div>
+                            <div class="profile-controls">
+                                <a href="profileTimeline.html" class="profile-control-left"><span class="fa fa-info"></span></a>
+                                <a href="#" class="profile-control-right"><span class="fa fa-plus"></span></a>
+                            </div>
+                        </div>                                                                        
+                    </li>
+					
+                    <li class="xn-title">Navigation</li>
+					
+                    <li class="active">
+                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>          
+                    </li>                    
+					
+					<li><a href="starkAppCenter.html"><span class="fa fa-caret-square-o-right"></span> <span class="xn-text">Stark App Center</a></li>
+					<li><a href="starkGroups.html"><span class="fa fa-users"></span> <span class="xn-text">Stark Groups</a></li>
+					<li><a href="newsFeed.html"><span class="fa fa-list-alt"></span> <span class="xn-text">News Feed</a></li>
+					
+                    <li class="xn-openable">
+                        <a href="profileTimeline.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</a>
+                        <ul>
+							<li><a href="profileTimeline.html"><span class="fa fa-clock-o"></span> My Timeline </a></li>
+                            <li><a href="profileStarkApp.html"><span class="fa fa-rocket"></span> My Stark Apps </a></li>
+							<li><a href="profileGroups.html"><span class="fa fa-users"></span> My Groups </a></li>
+                        </ul>
+                    </li>
+					
+					<li><a href="faq.html"><span class="fa fa-question-circle"></span> <span class="xn-text">FAQ</a></li>
+					<li><a href="search.html"><span class="fa fa-info"></span> <span class="xn-text">Credits</a></li>
+                    
+                </ul>
+                <!-- END X-NAVIGATION -->
+            </div>
+            <!-- END PAGE SIDEBAR -->
+            
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+                
+                <!-- START X-NAVIGATION VERTICAL -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    <!-- END TOGGLE NAVIGATION -->
+                    <!-- SEARCH -->
+                    <li class="xn-search">
+                        <form role="form">
+                            <input type="text" name="search" placeholder="Search..."/>
+                        </form>
+                    </li>   
+                    <!-- END SEARCH -->
+                    <!-- SIGN OUT -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                    </li> 
+                    <!-- END SIGN OUT -->
+                    <!-- NOTIFICATIONS -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#"><span class="fa fa-bell"></span></a>
+                        <div class="informer informer-danger">2</div>
+                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><span class="fa fa-bell"></span> Notifications</h3>                                
+                                <div class="pull-right">
+                                    <span class="label label-danger">2 new</span>
+                                </div>
+                            </div>
+                            <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+                                <a href="#" class="list-group-item">
+                                    <div class="list-group-status status-online"></div>
+                                    <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
+                                    <span class="contacts-title">Jane Doe</span>
+                                    <p>Rated <b>Autoreg Downloader</b> 5 stars</p>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <div class="list-group-status status-online"></div>
+                                    <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/>
+                                    <span class="contacts-title">Dmitry Ivaniuk</span>
+                                    <p>Donec risus sapien, sagittis et magna quis</p>
+                                </a>
+                            </div>     
+                            <div class="panel-footer text-center">
+                                <a href="error404.html">Show all notifications</a>
+                            </div>                            
+                        </div>                        
+                    </li>
+                    <!-- END NOTIFICATIONS -->
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->                   
+
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>                    
+                    <li class="active">Dashboard</li>
+                </ul>
+                <!-- END BREADCRUMB -->                       
+                
+                                  
+            </div>            
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END PAGE CONTAINER -->
+
+        <!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="login.html" class="btn btn-success btn-lg">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MESSAGE BOX-->
+
+		 <div class="page-content-wrap">
+        	<div ng-view>
+        	</div>
+        </div>  
+
+        <!-- START PRELOADS -->
+        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+        <!-- END PRELOADS -->     
+
+
+        
+    <!-- START SCRIPTS -->
+        <!-- START PLUGINS -->
+        <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <!-- END PLUGINS -->
+
+        <!-- START THIS PAGE PLUGINS-->        
+        <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>        
+        <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>   
+
+        <script type="text/javascript" src="js/plugins/angular/angular.js"></script>
+        <script type="text/javascript" src="js/plugins/angular-route/angular-route.js"></script>      
+        <!-- END THIS PAGE PLUGINS-->        
+
+        <!-- START TEMPLATE -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers/homeController.js"></script>
+        <!-- END TEMPLATE -->
+    <!-- END SCRIPTS -->         
+    </body>
+</html>
+
+
+
+
+
+
