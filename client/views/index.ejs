@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!-- define angular app -->
-<html ng-app="scotchApp">
+<html ng-app="myApp">
     <head>        
         
         <!-- META SECTION -->
@@ -64,16 +64,16 @@
 					<li ng-class="{active: isActive('/newsFeed')}"><a href="newsFeed"><span class="fa fa-list-alt"></span> <span class="xn-text">News Feed</a></li>
 					
                     <li class="xn-openable">
-                        <a href="profileTimeline.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</a>
+                        <a href=""><span class="fa fa-user"></span> <span class="xn-text">Profile</a>
                         <ul>
-							<li><a href="profileTimeline.html"><span class="fa fa-clock-o"></span> My Timeline </a></li>
-                            <li><a href="profileStarkApp.html"><span class="fa fa-rocket"></span> My Stark Apps </a></li>
-							<li><a href="profileGroups.html"><span class="fa fa-users"></span> My Groups </a></li>
+							<li ng-class="{active: isActive('/profileTimeline')}"><a href="profileTimeline"><span class="fa fa-clock-o"></span> My Timeline </a></li>
+                            <li ng-class="{active: isActive('/profileStarkApp')}"><a href="profileStarkApp"><span class="fa fa-rocket"></span> My Stark Apps </a></li>
+							<li ng-class="{active: isActive('/profileGroups')}"><a href="profileGroups"><span class="fa fa-users"></span> My Groups </a></li>
                         </ul>
                     </li>
 					
-					<li><a href="faq.html"><span class="fa fa-question-circle"></span> <span class="xn-text">FAQ</a></li>
-					<li><a href="search.html"><span class="fa fa-info"></span> <span class="xn-text">Credits</a></li>
+					<li ng-class="{active: isActive('/faq')}"><a href="/faq"><span class="fa fa-question-circle"></span> <span class="xn-text">FAQ</a></li>
+					<li><a href=""><span class="fa fa-info"></span> <span class="xn-text">Credits</a></li>
                     
                 </ul>
                 <!-- END X-NAVIGATION -->
@@ -88,7 +88,7 @@
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
                     <!-- TOGGLE NAVIGATION -->
                     <li class="xn-icon-button">
-                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                        <a href="" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
                     <!-- END TOGGLE NAVIGATION -->
                     <!-- SEARCH -->
@@ -105,17 +105,14 @@
                     <!-- END SIGN OUT -->
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                   
+                   
+                <!-- ANGULAR VIEW. PARTIAL PAGES LOADED HERE -->  
 
-                <!-- START BREADCRUMB -->
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
-                    <li class="active">Dashboard</li>
-                </ul>
-                <!-- END BREADCRUMB -->                       
-                <div class="page-content-wrap">
-                    <div ng-view>
-                    </div>
-                </div>  
+                <div ng-view>
+                </div>
+
+                <!-- END ANGULAR VIEW -->
+                 
                                   
             </div>            
             <!-- END PAGE CONTENT -->
@@ -123,7 +120,7 @@
         <!-- END PAGE CONTAINER -->
 
         <!-- MESSAGE BOX-->
-        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="message-box animated fadeIn" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
@@ -141,31 +138,20 @@
             </div>
         </div>
         <!-- END MESSAGE BOX-->
-
-		 
-
-        <!-- START PRELOADS -->
-        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->     
-
-
         
     <!-- START SCRIPTS -->
-	
-		
         <!-- START PLUGINS -->
         <script type="text/javascript" src="../js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="../js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../js/plugins/bootstrap/bootstrap.min.js"></script>        
         <!-- END PLUGINS -->
 
+        <!-- START THIS PAGE PLUGINS -->
+        <script type="text/javascript" src="../js/plugins/angular/angular.js"></script>
+        <script type="text/javascript" src="../js/plugins/angular-route/angular-route.js"></script>  
+
         <script type="text/javascript" src="../js/plugins.js"></script>        
         <script type="text/javascript" src="../js/actions.js"></script>
-		
-        <script type="text/javascript" src="../js/plugins/angular/angular.js"></script>
-        <script type="text/javascript" src="../js/plugins/angular-route/angular-route.js"></script>   
-        
         <!-- END THIS PAGE PLUGINS-->        
 
         <!-- START TEMPLATE -->
@@ -175,6 +161,12 @@
         <script src="../js/controllers/starkAppCenterController.js"></script>
         <script src="../js/controllers/starkGroupsController.js"></script>
         <script src="../js/controllers/newsFeedController.js"></script>
+        <script src="../js/controllers/profileTimelineController.js"></script>
+        <script src="../js/controllers/profileStarkAppController.js"></script>
+        <script src="../js/controllers/profileGroupsController.js"></script>
+        <script src="../js/controllers/starkAppPageController.js"></script>
+        <script src="../js/controllers/groupPageController.js"></script>
+        <script src="../js/controllers/faqController.js"></script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->         
     </body>

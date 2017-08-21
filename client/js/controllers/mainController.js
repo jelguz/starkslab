@@ -1,3 +1,3 @@
-scotchApp.controller('mainController', function($scope) {
+myApp.controller('mainController', function($scope) {
 	$scope.message = 'Everyone come and see how good I look!';
 });

@@ -23,6 +23,24 @@ app.get('/starkGroups', function(req, res){
 app.get('/newsFeed', function(req, res){
 	res.render('index.ejs');
 });
+app.get('/profileTimeline', function(req, res){
+	res.render('index.ejs');
+});
+app.get('/profileStarkApp', function(req, res){
+	res.render('index.ejs');
+});
+app.get('/profileGroups', function(req, res){
+	res.render('index.ejs');
+});
+app.get('/starkAppPage', function(req, res){
+	res.render('index.ejs');
+});
+app.get('/groupPage', function(req, res){
+	res.render('index.ejs');
+});
+app.get('/faq', function(req, res){
+	res.render('index.ejs');
+});
 
 app.listen(port, function(){
 	console.log('SERVER RUNNING... PORT: ' + port)

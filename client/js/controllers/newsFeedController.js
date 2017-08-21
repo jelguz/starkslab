@@ -1,3 +1,3 @@
-scotchApp.controller('newsFeedController', function($scope) {
+myApp.controller('newsFeedController', function($scope) {
 	$scope.message = 'Jelene Guzman';
 });
