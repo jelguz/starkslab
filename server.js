@@ -11,9 +11,6 @@ app.use(express.static(path.resolve(__dirname, 'client')));
 app.get('/', function(req, res){
 	res.render('index.ejs');
 });
-app.get('/home', function(req,res){
-	res.render('index.ejs');
-}); 
 app.listen(port, function(){
 	console.log('SERVER RUNNING... PORT: ' + port)
 })

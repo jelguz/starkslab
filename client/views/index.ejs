@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+
+<!-- define angular app -->
+<html ng-app="scotchApp">
     <head>        
+
+    <base href="/">
         <!-- META SECTION -->
         <title>Stark's Lab</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,14 +16,18 @@
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
-        <!-- EOF CSS INCLUDE -->                                    
+        <!-- EOF CSS INCLUDE -->       
+   
+</head>
+
     </head>
-    <body>
+    <body ng-controller="mainController">
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
+            <nav ng-controller="navController">
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
@@ -47,13 +55,13 @@
 					
                     <li class="xn-title">Navigation</li>
 					
-                    <li class="active">
-                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>          
+                    <li ng-class="{active: isActive('/')}">
+                        <a href="/"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>          
                     </li>                    
 					
-					<li><a href="starkAppCenter.html"><span class="fa fa-caret-square-o-right"></span> <span class="xn-text">Stark App Center</a></li>
-					<li><a href="starkGroups.html"><span class="fa fa-users"></span> <span class="xn-text">Stark Groups</a></li>
-					<li><a href="newsFeed.html"><span class="fa fa-list-alt"></span> <span class="xn-text">News Feed</a></li>
+					<li ng-class="{active: isActive('/about')}"><a href="about"><span class="fa fa-caret-square-o-right"></span> <span class="xn-text">Stark App Center</a></li>
+					<li ng-class="{active: isActive('/contact')}"><a href="contact"><span class="fa fa-users"></span> <span class="xn-text">Stark Groups</a></li>
+					<li ng-class="{active: isActive('/jelene')}"><a href="jelene"><span class="fa fa-list-alt"></span> <span class="xn-text">News Feed</a></li>
 					
                     <li class="xn-openable">
                         <a href="profileTimeline.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</a>
@@ -69,6 +77,7 @@
                     
                 </ul>
                 <!-- END X-NAVIGATION -->
+            </nav>
             </div>
             <!-- END PAGE SIDEBAR -->
             
@@ -175,23 +184,20 @@
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
-        <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="../js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="../js/plugins/bootstrap/bootstrap.min.js"></script>        
         <!-- END PLUGINS -->
 
-        <!-- START THIS PAGE PLUGINS-->        
-        <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>        
-        <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        <script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>   
 
-        <script type="text/javascript" src="js/plugins/angular/angular.js"></script>
-        <script type="text/javascript" src="js/plugins/angular-route/angular-route.js"></script>      
+        <script type="text/javascript" src="../js/plugins/angular/angular.js"></script>
+        <script type="text/javascript" src="../js/plugins/angular-route/angular-route.js"></script>   
+        
         <!-- END THIS PAGE PLUGINS-->        
 
         <!-- START TEMPLATE -->
-        <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/controllers/homeController.js"></script>
+        <script src="../js/script.js"></script>
+        <script src="../js/controllers/navController.js"></script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->         
     </body>

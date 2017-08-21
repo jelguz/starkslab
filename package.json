@@ -4,12 +4,23 @@
   "description": "Starks Lab",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Jelene Guzman <jeleneguzman@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.6.6",
     "ejs": "^2.5.7",
     "express": "^4.15.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jelguz/starkslab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jelguz/starkslab/issues"
+  },
+  "homepage": "https://github.com/jelguz/starkslab#readme"
 }
