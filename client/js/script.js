@@ -5,47 +5,27 @@
 	scotchApp.config(function($routeProvider, $locationProvider) {
 		$routeProvider
 
-			// route for the home page
 			.when('/', {
-				templateUrl : 'partials/home.html',
+				templateUrl : 'partials/dashboard.html',
 				controller  : 'mainController'
 			})
 
-			// route for the about page
-			.when('/about', {
-				templateUrl : 'partials/about.html',
-				controller  : 'aboutController'
+			.when('/starkAppCenter', {
+				templateUrl : 'partials/starkAppCenter.html',
+				controller  : 'starkAppCenterController'
 			})
 
 			// route for the contact page
-			.when('/contact', {
-				templateUrl : 'partials/contact.html',
-				controller  : 'contactController'
+			.when('/starkGroups', {
+				templateUrl : 'partials/starkGroups.html',
+				controller  : 'starkGroupsController'
 			})
 
 			
-			.when('/jelene', {
-				templateUrl : 'partials/jelene.html',
-				controller  : 'jeleneController'
+			.when('/newsFeed', {
+				templateUrl : 'partials/newsFeed.html',
+				controller  : 'newsFeedController'
 			});
 
 			$locationProvider.html5Mode(true);
-	});
-
-	// create the controller and inject Angular's $scope
-	scotchApp.controller('mainController', function($scope) {
-		// create a message to display in our view
-		$scope.message = 'Everyone come and see how good I look!';
-	});
-
-	scotchApp.controller('aboutController', function($scope) {
-		$scope.message = 'Look! I am an about page.';
-	});
-
-	scotchApp.controller('contactController', function($scope) {
-		$scope.message = 'Contact us! JK. This is just a demo.';
-	});
-
-	scotchApp.controller('jeleneController', function($scope) {
-		$scope.message = 'Jelene Guzman';
 	});

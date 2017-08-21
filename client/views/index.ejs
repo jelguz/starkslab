@@ -3,8 +3,7 @@
 <!-- define angular app -->
 <html ng-app="scotchApp">
     <head>        
-
-    <base href="/">
+        
         <!-- META SECTION -->
         <title>Stark's Lab</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,11 +15,12 @@
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
-        <!-- EOF CSS INCLUDE -->       
-   
-</head>
+        <!-- EOF CSS INCLUDE -->   
 
+        <base href="/">
+        
     </head>
+
     <body ng-controller="mainController">
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
@@ -59,9 +59,9 @@
                         <a href="/"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>          
                     </li>                    
 					
-					<li ng-class="{active: isActive('/about')}"><a href="about"><span class="fa fa-caret-square-o-right"></span> <span class="xn-text">Stark App Center</a></li>
-					<li ng-class="{active: isActive('/contact')}"><a href="contact"><span class="fa fa-users"></span> <span class="xn-text">Stark Groups</a></li>
-					<li ng-class="{active: isActive('/jelene')}"><a href="jelene"><span class="fa fa-list-alt"></span> <span class="xn-text">News Feed</a></li>
+					<li ng-class="{active: isActive('/starkAppCenter')}"><a href="starkAppCenter"><span class="fa fa-caret-square-o-right"></span> <span class="xn-text">Stark App Center</a></li>
+					<li ng-class="{active: isActive('/starkGroups')}"><a href="starkGroups"><span class="fa fa-users"></span> <span class="xn-text">Stark Groups</a></li>
+					<li ng-class="{active: isActive('/newsFeed')}"><a href="newsFeed"><span class="fa fa-list-alt"></span> <span class="xn-text">News Feed</a></li>
 					
                     <li class="xn-openable">
                         <a href="profileTimeline.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</a>
@@ -103,37 +103,6 @@
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
-                    <!-- NOTIFICATIONS -->
-                    <li class="xn-icon-button pull-right">
-                        <a href="#"><span class="fa fa-bell"></span></a>
-                        <div class="informer informer-danger">2</div>
-                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-bell"></span> Notifications</h3>                                
-                                <div class="pull-right">
-                                    <span class="label label-danger">2 new</span>
-                                </div>
-                            </div>
-                            <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-online"></div>
-                                    <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
-                                    <span class="contacts-title">Jane Doe</span>
-                                    <p>Rated <b>Autoreg Downloader</b> 5 stars</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <div class="list-group-status status-online"></div>
-                                    <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/>
-                                    <span class="contacts-title">Dmitry Ivaniuk</span>
-                                    <p>Donec risus sapien, sagittis et magna quis</p>
-                                </a>
-                            </div>     
-                            <div class="panel-footer text-center">
-                                <a href="error404.html">Show all notifications</a>
-                            </div>                            
-                        </div>                        
-                    </li>
-                    <!-- END NOTIFICATIONS -->
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                   
 
@@ -143,7 +112,10 @@
                     <li class="active">Dashboard</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
-                
+                <div class="page-content-wrap">
+                    <div ng-view>
+                    </div>
+                </div>  
                                   
             </div>            
             <!-- END PAGE CONTENT -->
@@ -170,10 +142,7 @@
         </div>
         <!-- END MESSAGE BOX-->
 
-		 <div class="page-content-wrap">
-        	<div ng-view>
-        	</div>
-        </div>  
+		 
 
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
@@ -183,13 +152,17 @@
 
         
     <!-- START SCRIPTS -->
+	
+		
         <!-- START PLUGINS -->
         <script type="text/javascript" src="../js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="../js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../js/plugins/bootstrap/bootstrap.min.js"></script>        
         <!-- END PLUGINS -->
 
-
+        <script type="text/javascript" src="../js/plugins.js"></script>        
+        <script type="text/javascript" src="../js/actions.js"></script>
+		
         <script type="text/javascript" src="../js/plugins/angular/angular.js"></script>
         <script type="text/javascript" src="../js/plugins/angular-route/angular-route.js"></script>   
         
@@ -198,6 +171,10 @@
         <!-- START TEMPLATE -->
         <script src="../js/script.js"></script>
         <script src="../js/controllers/navController.js"></script>
+        <script src="../js/controllers/mainController.js"></script>
+        <script src="../js/controllers/starkAppCenterController.js"></script>
+        <script src="../js/controllers/starkGroupsController.js"></script>
+        <script src="../js/controllers/newsFeedController.js"></script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->         
     </body>
