@@ -26,7 +26,7 @@
         <div class="page-container">
             
             <!-- START PAGE SIDEBAR -->
-            <div class="page-sidebar">
+            <div class="page-sidebar" ng-show="globals.currentUser.authdata">
             <nav ng-controller="navController">
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
@@ -43,7 +43,7 @@
                                 <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">Echo Cristobal</div>
+                                <div class="profile-data-name">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}}</div>
                                 <div class="profile-data-title">Developer/Designer</div>
                             </div>
                             <div class="profile-controls">
@@ -85,7 +85,7 @@
             <div class="page-content">
                 
                 <!-- START X-NAVIGATION VERTICAL -->
-                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel"  ng-show="globals.currentUser.authdata">
                     <!-- TOGGLE NAVIGATION -->
                     <li class="xn-icon-button">
                         <a href="" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
@@ -119,7 +119,7 @@
         </div>
         <!-- END PAGE CONTAINER -->
 
-        <!-- MESSAGE BOX-->
+        <!-- SIGNOUT BOX-->
         <div class="message-box animated fadeIn" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
@@ -129,15 +129,15 @@
                         <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
                     </div>
                     <div class="mb-footer">
-                        <div class="pull-right">
-                            <a href="login.html" class="btn btn-success btn-lg">Yes</a>
+                        <div class="pull-right" >                   
+                            <button ng-controller="loginController" ng-click="logout()" class="btn btn-success btn-lg mb-control-close">Yes</button>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX-->
+        <!-- END SIGNOUT BOX-->
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
@@ -149,6 +149,7 @@
         <!-- START THIS PAGE PLUGINS -->
         <script type="text/javascript" src="../js/plugins/angular/angular.js"></script>
         <script type="text/javascript" src="../js/plugins/angular-route/angular-route.js"></script>  
+        <script src="../js/plugins/angular-cookies/angular-cookies.js"></script>
 
         <script type="text/javascript" src="../js/plugins.js"></script>        
         <script type="text/javascript" src="../js/actions.js"></script>
@@ -167,6 +168,10 @@
         <script src="../js/controllers/starkAppPageController.js"></script>
         <script src="../js/controllers/groupPageController.js"></script>
         <script src="../js/controllers/faqController.js"></script>
+        <script src="../js/controllers/loginController.js"></script>
+
+        <script src="../js/services/services.js"></script>
+        <script src="../js/constants.js"></script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->         
     </body>

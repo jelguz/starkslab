@@ -1,11 +1,28 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+'use strict';
 
-myApp.config(function($routeProvider, $locationProvider) {
+// declare modules
+angular.module('Authentication', []);
+angular.module('Home', []);
+
+var myApp = angular.module('myApp', [
+    'Authentication',
+    'Home',
+    'ngRoute',
+    'ngCookies'
+]);
+
+myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+
 	$routeProvider
 
 		.when('/', {
 			templateUrl : 'partials/dashboard.html',
 			controller  : 'mainController'
+		})
+
+		.when('/login', {
+			templateUrl : 'views/login.ejs',
+			controller  : 'loginController'
 		})
 
 		.when('/starkAppCenter', {
@@ -51,7 +68,29 @@ myApp.config(function($routeProvider, $locationProvider) {
 		.when('/faq', {
 			templateUrl : 'partials/faq.html',
 			controller  : 'faqController'
-		});
+		})
+
+		 .otherwise({ redirectTo: '/login' });
 
 		$locationProvider.html5Mode(true);
-});
+
+		}])
+
+.run(['$rootScope', '$location', '$cookieStore', '$http',
+    function ($rootScope, $location, $cookieStore, $http) {
+        // keep user logged in after page refresh
+        $rootScope.globals = $cookieStore.get('globals') || {};
+        if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+        }
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in
+            if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                $location.path('/login');
+            }
+        });
+    }])
+;
+
+		

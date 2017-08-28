@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html  ng-app="myApp" lang="en" class="body-full-height">
+    <head>        
+        <!-- META SECTION -->
+        <title>Stark's Lab</title>                 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+        <!-- EOF CSS INCLUDE -->                                    
+    </head>
+    <body>
+        
+        <div class="login-container">
+        
+            <div class="login-box animated fadeInDown">
+                <!-- <div class="login-logo"></div> -->
+                <div class="login-body">
+                    <div class="login-title"><strong>Greetings</strong>, Please login</div>
+                    <form name="form" ng-submit="login()" role="form" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="text"  name="username" id="username" class="form-control" placeholder="Username" ng-model="username" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" ng-model="password" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-info btn-block">Log In</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="login-footer">
+                    <div class="pull-left">
+                        &copy; 2017 Stark's Lab
+                    </div>
+                    <div class="pull-right">
+                        <a href="#">About</a> |
+                        <a href="#">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- START SCRIPTS -->
+            <!-- START PLUGINS -->
+            <script type="text/javascript" src="../js/plugins/jquery/jquery.min.js"></script>
+            <script type="text/javascript" src="../js/plugins/jquery/jquery-ui.min.js"></script>
+            <script type="text/javascript" src="../js/plugins/bootstrap/bootstrap.min.js"></script>        
+            <!-- END PLUGINS -->
+
+            <!-- START THIS PAGE PLUGINS -->
+            <script type="text/javascript" src="../js/plugins/angular/angular.js"></script>
+            <script type="text/javascript" src="../js/plugins/angular-route/angular-route.js"></script>  
+            <script src="../js/plugins/angular-cookies/angular-cookies.js"></script>
+
+            <script type="text/javascript" src="../js/plugins.js"></script>        
+            <script type="text/javascript" src="../js/actions.js"></script>
+            <!-- END THIS PAGE PLUGINS-->        
+
+            <!-- START TEMPLATE -->
+            <script src="../js/script.js"></script>
+            
+            <script src="../js/controllers/loginController.js"></script>
+
+            <script src="../js/services/services.js"></script>
+            <script src="../js/constants.js"></script>
+            <!-- END TEMPLATE -->
+        <!-- END SCRIPTS -->    
+
+    </body>
+</html>
+
+
+
+
+
+

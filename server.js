@@ -11,11 +11,11 @@ app.use(express.static(path.resolve(__dirname, 'client')));
 // Add headers
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://manvswbfeq17:8080');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -27,6 +27,9 @@ app.get('/', function(req, res){
 	res.render('index.ejs');
 });
 app.get('/', function(req, res){
+	res.render('index.ejs');
+});
+app.get('/login', function(req, res){
 	res.render('index.ejs');
 });
 app.get('/starkAppCenter', function(req, res){
