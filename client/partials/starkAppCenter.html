@@ -1,6 +1,6 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
-    <li><a href="#">Home</a></li>
+    <li><a href="/">Home</a></li>
     <li class="active"><a href="#">Stark App Center</a></li>
 </ul>
 <!-- END BREADCRUMB -->                                                
@@ -45,30 +45,30 @@
     </div>
     
     <div class="row-fluid" ng-controller="starkAppCenterController">
-        <div class="col-md-3" ng-repeat="app in myData">
+        <div class="col-md-3" ng-repeat="app in myData" ng-cloak>
 		
             <!-- STARK APP ITEM -->
             <div class="panel panel-default">
                 <div class="panel-body profile">
                     <div class="profile-image">
-                        <img src="assets/images/appicons/{{app.icon.normalSizeLink}}" alt="Nadia Ali"/>
+                        <img src="assets/images/appicons/{{ app.icon.normalSizeLink }}"/>
                     </div>
                     <div class="profile-data">
                         <div class="profile-data-name">{{ app.name }}</div>
                         <div class="profile-data-title" ng-repeat="developer in app.developers">
-							<span>{{developer.firstName}} {{developer.lastName}}</span>
+							<span>{{ developer.firstName }} {{ developer.lastName }}</span>
 						</div>
                     </div>
                     <div class="profile-controls">
-                        <a href="starkAppPage.html" class="profile-control-left"><span class="fa fa-info"></span></a>
+                        <a href="starkApp?id={{ app.id }}" class="profile-control-left"><span class="fa fa-info"></span></a>
                         <a href="#" class="profile-control-right"><span class="fa fa-star-o"></span></a>
                     </div>
                 </div>                                
                 <div class="panel-body">                                    
                     <div class="contact-info">
-                        <p><small>Description</small><br/>{{ app.description }}</p>
-                        <p><small>Downloads</small><br/></p>
-						<p><small>Rating</small><br/>{{ app.rating }}</p>										
+                        <p><small>Description</small><br/> {{ app.description }} </p>
+                        <p><small>Downloads</small><br/> {{ app.downloadCount }} </p>
+						<p><small>Rating</small><br/> {{ app.ratingAverage }} </p>										
                     </div>
                 </div>    
 				

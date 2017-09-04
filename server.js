@@ -50,7 +50,7 @@ app.get('/profileStarkApp', function(req, res){
 app.get('/profileGroups', function(req, res){
 	res.render('index.ejs');
 });
-app.get('/starkAppPage', function(req, res){
+app.get('/starkApp', function(req, res){
 	res.render('index.ejs');
 });
 app.get('/groupPage', function(req, res){

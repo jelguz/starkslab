@@ -21,7 +21,7 @@
         
     </head>
 
-    <body ng-controller="mainController">
+    <body ng-controller="mainController" ng-cloak>
         <!-- START PAGE CONTAINER -->
         <div class="page-container">
             
@@ -36,11 +36,11 @@
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                            <img src="assets/images/users/{{globals.currentUser.username}}.jpg"/>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                                <img src="assets/images/users/{{globals.currentUser.username}}.jpg"/>
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}}</div>

@@ -70,7 +70,13 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
 			controller  : 'faqController'
 		})
 
-		 .otherwise({ redirectTo: '/login' });
+		.when('/starkApp', {
+			templateUrl : 'partials/starkAppPage.html',
+			controller  : 'starkAppPageController'
+		})
+
+		 // .otherwise({ redirectTo: '/login' })
+		 ;
 
 		$locationProvider.html5Mode(true);
 

@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Stark App Center</a></li>
-    <li class="active">API Program Generator</li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/starkAppCenter">Stark App Center</a></li>
+    <li class="active">{{ appData.name }}</li>
 </ul>
 <!-- END BREADCRUMB -->
 
@@ -20,53 +20,34 @@
 		<div class="col-md-3">
             
             <div class="panel panel-default">
-                <div class="panel-body profile">
+                <div class="panel-body profile" ng-controller="starkAppPageController">
                     <div class="profile-image">
-                        <img src="assets/images/appicons/default icon (12).png" alt="Nadia Ali"/>
+                        <img src="assets/images/appicons/default icon (12).png"/>
                     </div>
                     <div class="profile-data">
-                        <div class="profile-data-name">API Program Generator</div>
-                        <div class="profile-data-title" style="color: #FFF;">XLabs</div>
+                        <div class="profile-data-name">{{ appData.name }} </div>
+                        <div class="profile-data-title" ng-repeat="developer in appData.developers">
+                            <span>{{ developer.firstName }} {{ developer.lastName }}</span>
+                        </div>
                     </div>                                  
                 </div>                                
                 <div class="panel-body list-group border-bottom">
-					<button class="btn btn-info btn-lg btn-block"><i class="fa fa-download"></i>DOWNLOAD</button>
-					
-					<div class="btn-group btn-block">
-						<a href="#" data-toggle="dropdown" class="btn btn-warning btn-lg btn-block dropdown-toggle"><i class="fa fa-star"></i>RATE <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>											
-						</ul>
-					</div>
+					<button class="btn btn-info btn-lg btn-block" ng-click="downloadApp()"><i class="fa fa-download"></i>DOWNLOAD</button>
 
-					<p class="list-group-item" style="border:none;"> Downloads <span class="badge badge-default">26</span></p>                           
-                    <p class="list-group-item" style="border:none;"> Rating <span class="badge badge-info">4</span></p>        
+                    <button class="mb-control-rate btn btn-warning btn-lg btn-block" data-box="#mb-rate" href="#rate"><i class="fa fa-star"></i> RATE </button>
+
+					<p class="list-group-item" style="border:none;"> Downloads <span class="badge badge-default"> {{ appData.downloadCount }} </span></p>                           
+                    <p class="list-group-item" style="border:none;"> Rating <span class="badge badge-default"> {{ appData.ratingAverage }} </span></p>        
 				
 				
                 </div>
                 <div class="panel-body">
                     <h4 class="text-title">Developers</h4>
                     <div class="row">
-                        <div class="col-md-4 col-xs-4">
+                        <div class="col-md-4 col-xs-4" ng-repeat="developer in appData.developers">
                             <a href="#" class="friend">
-                                <img src="assets/images/users/user.jpg"/>
-                                <span>Kiteh Gangano</span>
-                            </a>                                            
-                        </div>
-                        <div class="col-md-4 col-xs-4">                                            
-                            <a href="#" class="friend">
-                                <img src="assets/images/users/user2.jpg"/>
-                                <span>Jericho Cristobal</span>
-                            </a>                                            
-                        </div>
-                        <div class="col-md-4 col-xs-4">                                            
-                            <a href="#" class="friend">
-                                <img src="assets/images/users/user4.jpg"/>
-                                <span>Archie David</span>
+                                <img src="assets/images/users/{{developer.id}}.jpg"/>
+                                <span>{{ developer.firstName }} {{ developer.lastName }}</span>
                             </a>                                            
                         </div>
                     </div>
@@ -78,9 +59,8 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3>Categories</h3>
-                    <div class="links">
-                        <a href="#">AS400 <span class="label label-default">195</span></a>
-                        <a href="#">Back-end <span class="label label-default">278</span></a>
+                    <div class="links" ng-repeat="category in appData.categories">
+                        <a href="#">{{ category.name }} <span class="label label-default">1</span></a>
                     </div>
                 </div>
             </div>
@@ -88,12 +68,8 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3>Tags</h3>
-                    <ul class="list-tags push-up-10">
-                        <li><a href="#"><span class="fa fa-tag"></span> Donec</a></li>
-                        <li><a href="#"><span class="fa fa-tag"></span> Bibendum</a></li>
-                        <li><a href="#"><span class="fa fa-tag"></span> Praesent</a></li>
-                        <li><a href="#"><span class="fa fa-tag"></span> Fusce</a></li>
-                        <li><a href="#"><span class="fa fa-tag"></span> Nam quis</a></li>
+                    <ul class="list-tags push-up-10" ng-repeat="tag in appData.tags">
+                        <li><a href="#"><span class="fa fa-tag"></span> {{ tag }}</a></li>
                     </ul>
                 </div>
             </div>                            
@@ -106,68 +82,40 @@
                 <div class="panel-body posts">
                             
                     <div class="post-item">
-                        <div class="post-date"><span class="fa fa-calendar"></span> October 23, 2014 / <a href="pages-blog-post.html#comments">3 Comments</a></div>
+                        <div class="post-date">
+                            <span class="fa fa-calendar"></span> 
+                            <span>
+                                Last Updated: {{ appData.formattedUpdateDate | date :'dd/MMM/yyyy'}}
+                            </span> 
+                        </div>
                         <div class="post-text">                                            
                             <h4>Description</h4>
-                            <p>In 350 BC, <i>Greek philosopher Aristotle</i> suggested that nature abhors a vacuum, a principle that became known as the horror vacui. This concept built upon a 5th-century BC ontological argument by the Greek philosopher Parmenides, who denied the possible existence of a void in space.[8] Based on this idea that a vacuum could not exist, in the West it was widely held for many centuries that space could not be empty. As late as the 17th century, the French philosopher René Descartes argued that the entirety of space must.
+                            <p> 
+                                {{ appData.description }}
+                            </p>
                             <h4>How to use</h4>
-                            <p>According to the Big Bang theory, the Universe originated in an extremely hot and dense state about 13.8 billion years ago and began expanding rapidly. About 380,000 years later the Universe had cooled sufficiently to allow protons and electrons to combine and form hydrogen—the so-called recombination epoch. When this happened, matter and energy became decoupled, allowing photons to travel freely through space. The matter that remained following the initial expansion has since undergone gravitational collapse to create stars, galaxies and other astronomical objects, leaving behind a deep vacuum that forms what is now called outer space. As light has a finite velocity, this theory also constrains the size of the directly observable Universe. This leaves open the question as to whether the Universe is finite or infinite.</p>
+                            <p>
+
+                            </p>
                             
                         </div>
                     </div>                                            
                        
-                    <h3 class="push-down-20">Comments</h3>
-                    <ul class="media-list">
+                    <h3 class="push-down-20">Reviews</h3>
+                    <ul class="media-list" ng-repeat="review in appData.reviews">
                         <li class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object img-text" src="assets/images/users/user.jpg" alt="Dmitry Ivaniuk" width="64">
+                                <img class="media-object img-text" src="assets/images/users/{{review.user.id}}.jpg"  width="64">
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading">Dmitry Ivaniuk</h4>
-                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                                <p class="text-muted">October 24, 2014, 15:20</p>
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object img-text" src="assets/images/users/user6.jpg" alt="Darh Vader" width="64">
-                                    </a>
-                                    <div class="media-body">
-                                      <h4 class="media-heading">Darth Vader</h4>
-                                      <p>What? What did you say? It's not even a language...</p>
-                                      <p class="text-muted">October 24, 2014, 16:20</p>
-                                    </div>
-                                </div>                                                                                          
+                                <h4 class="media-heading"> {{ review.user.firstName }} {{ review.user.lastName }} </h4>
+                                <p> Rating: {{ review.rating }} </p>
+                                <p> {{ review.text }} </p>
+                                <p class="text-muted"> {{ review.date }} </p>
                             </div>                                            
                         </li>
-                        <li class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object img-text" src="assets/images/users/user7.jpg" alt="Samuel Leroy Jackson" width="64">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Samuel Leroy Jackson</h4>
-                                <p>We happy? Vincent, we happy?</p>
-                                <p class="text-muted">October 24, 2014, 14:30</p>
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object img-text" src="assets/images/users/user5.jpg" alt="John Travolta" width="64">
-                                    </a>
-                                    <div class="media-body">
-                                      <h4 class="media-heading">John Travolta</h4>
-                                      <p>Yeeees we happy!</p>
-                                      <p class="text-muted">October 24, 2014, 14:32</p>
-                                    </div>
-                                </div>                                                                                          
-                            </div>
-                        </li>
                     </ul>  
-
-					<div class="panel-body">
-						<div class="form-group">
-							<textarea class="form-control" placeholder="Write a comment" rows="1"></textarea>   
-						</div>
-						<div class="form-group">
-							<button class="btn btn-default pull-right" type="button">Add Comment</button>
-						</div>
-					</div>									
+								
                 </div>
             </div>
             
@@ -176,4 +124,44 @@
     </div>
                                             
 </div>
-<!-- END PAGE CONTENT WRAPPER -->                       
+<!-- END PAGE CONTENT WRAPPER -->         
+
+<!-- RATE BOX-->
+        <div class="message-box animated fadeIn" id="mb-rate">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-star"></span> Rate {{ appData.name }}</div>
+                    <div class="mb-content">
+                        <div class="form-group">
+
+                            <div class="col-md-1 col-md-offset-3">                                    
+                                <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="1" required/> 1 </label>
+                            </div>
+                            <div class="col-md-1">                                    
+                                <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="2"/> 2 </label>
+                            </div>
+                            <div class="col-md-1">                                    
+                                <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="3"/> 3 </label>
+                            </div>
+                            <div class="col-md-1">                                    
+                                <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="4"/> 4 </label>
+                            </div>
+                            <div class="col-md-1">                                    
+                                <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="5"/> 5 </label>
+                            </div>
+
+                            <textarea class="form-control" placeholder="Write a review (Optional)" rows="1" data-ng-model="userReview"></textarea> 
+                            
+                        </div>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right" >                   
+                            <button ng-controller="starkAppPageController" ng-click="rateApp()" class="btn btn-success btn-lg mb-control-rate-close">Submit</button>
+                            <button class="btn btn-default btn-lg mb-control-rate-close">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- END RATE BOX-->              
+<script type="text/javascript" src="../js/actions1.js"></script>
