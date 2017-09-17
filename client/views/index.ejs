@@ -103,6 +103,30 @@
                         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
+                    <!-- NOTIFICATIONS -->
+                    <li class="xn-icon-button pull-right">
+                        <a href="#"><span class="fa fa-bell"></span></a>
+                        <div class="informer informer-danger" ng-model="notifCount"> {{ myData.length }} </div>
+                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><span class="fa fa-bell"></span> Notifications</h3>   <div class="pull-right">
+                                    <span class="label label-danger">{{ myData.length }} new</span>
+                                </div>
+                            </div>
+                            <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+                                <a href="#" class="list-group-item"  ng-repeat="notifs in myData" ng-cloak>
+                                    <div class="list-group-status status-online"></div>
+                                    <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
+                                    <span class="contacts-title">{{ notifs.originatorId}}</span>
+                                    <p>{{ notifs.actionType }}ed <b> {{ notifs.itemId }} </b></p>
+                                </a>
+                            </div>     
+                            <div class="panel-footer text-center">
+                                <a href="error404.html">Show all notifications</a>
+                            </div>                            
+                        </div>                        
+                    </li>
+                    <!-- END NOTIFICATIONS -->
                 </ul>
                 <!-- END X-NAVIGATION VERTICAL -->                   
                    
@@ -150,6 +174,8 @@
         <script type="text/javascript" src="../js/plugins/angular/angular.js"></script>
         <script type="text/javascript" src="../js/plugins/angular-route/angular-route.js"></script>  
         <script src="../js/plugins/angular-cookies/angular-cookies.js"></script>
+        <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>
 
         <script type="text/javascript" src="../js/plugins.js"></script>        
         <script type="text/javascript" src="../js/actions.js"></script>
