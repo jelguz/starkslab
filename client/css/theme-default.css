@@ -1079,6 +1079,11 @@ body.page-container-boxed .page-container {
   -moz-border-radius: 20%;
   -webkit-border-radius: 20%;
   border-radius: 20%;
+    background: #808080; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#808080, #FFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#808080, #FFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#808080, #FFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#808080, #FFF); /* Standard syntax */
 }
 .profile .profile-data {
   width: 100%;
@@ -1401,6 +1406,11 @@ a.list-group-item:focus {
   -moz-border-radius: 20%;
   -webkit-border-radius: 20%;
   border-radius: 20%;
+    background: #808080; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#808080, #FFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#808080, #FFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#808080, #FFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#808080, #FFF); /* Standard syntax */
 }
 .friend span {
   display: block;
@@ -3990,6 +4000,11 @@ background: #1caf9a !important;
   -moz-box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.1);
+    background: #808080; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#808080, #FFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#808080, #FFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#808080, #FFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#808080, #FFF); /* Standard syntax */
 }
 .timeline {
   float: left;
