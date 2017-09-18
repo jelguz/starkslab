@@ -41,6 +41,12 @@
                             <button type="submit" class="btn btn-info btn-block">Log In</button>
                         </div>
                     </div>
+					<div id="loginErrorCollapse" class="collapse">
+						<div class="alert alert-danger" role="alert">
+							<button type="button" class="close" data-toggle="collapse" data-target="#loginErrorCollapse"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							Incorrect username or password. Please try again.
+						</div>
+					</div>
                     </form>
                 </div>
                 <div class="login-footer">
@@ -56,6 +62,21 @@
             
         </div>
         
+		<!-- Modal -->
+		<div class="modal fade" id="loginModal" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content" login-body>
+					<div clas="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title login-title">Login Error</h4>
+					</div>
+					<div class="modal-body">
+						<p>{{error}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
     </body>
 </html>
 
