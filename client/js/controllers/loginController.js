@@ -1,8 +1,8 @@
 'use strict';
   
 myApp.controller('loginController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'AuthenticationService', '$http', 'API_ENDPOINT',
+    function ($scope, $rootScope, $location, AuthenticationService, $http, API_ENDPOINT) {
         
   
         $scope.login = function () {
@@ -13,6 +13,7 @@ myApp.controller('loginController',
                 if(response.data.successfulLogin == true) {
                     AuthenticationService.SetCredentials(response.data.id, response.data.successfulLogin, 
                         response.data.firstName, response.data.lastName, response.data.email);
+					$scope.loadNotifs;
                     $location.path('/');
                 } else {
                     $scope.error = response.message;
@@ -25,4 +26,5 @@ myApp.controller('loginController',
             AuthenticationService.ClearCredentials();
             $location.path('/login');
         };
+
     }]);
