@@ -3,8 +3,7 @@
 myApp.controller('loginController',
     ['$scope', '$rootScope', '$location', 'AuthenticationService', '$http', 'API_ENDPOINT', '$q',
     function ($scope, $rootScope, $location, AuthenticationService, $http, API_ENDPOINT, $q) {
-        
-  
+    	    	
         $scope.login = function () {
             // reset login status
             AuthenticationService.ClearCredentials();
@@ -21,7 +20,6 @@ myApp.controller('loginController',
                 } else {
                     $scope.error = response.message;
                     $scope.dataLoading = false;
-					console.log("BAD LOGIN");
 					$("#loginErrorCollapse").collapse("show");
                 }
             });
@@ -37,10 +35,8 @@ myApp.controller('loginController',
 			$http.get(API_ENDPOINT.url + '/persons/get/' + $rootScope.globals.currentUser.username)
 			.then(function(response){
 				if (response.data.length == 0) {
-					console.log("PERSON DOES NOT EXIST!");
 					deferred.resolve(false);
 				} else { 
-					console.log("PERSON ALREADY EXISTS!");
 					deferred.resolve(true);
 				}
 			});
@@ -60,4 +56,11 @@ myApp.controller('loginController',
 			});
 		}
 		
+		function CheckIfUserIsLoggedIn(){
+			if ($rootScope.globals.currentUser != undefined && $rootScope.globals.currentUser || null) {
+				$location.path('/');
+			}
+		}
+		
+		CheckIfUserIsLoggedIn();
     }]);
