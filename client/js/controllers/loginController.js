@@ -10,20 +10,31 @@ myApp.controller('loginController',
             $scope.dataLoading = true;
             AuthenticationService.Login($scope.username, $scope.password, function(response) {
                 if(response.data.successfulLogin == true) {
+                	$scope.getNotifs($scope.username);
+
                     AuthenticationService.SetCredentials(response.data.id, response.data.successfulLogin, 
                         response.data.firstName, response.data.lastName, response.data.email);
 					PersonExistsInDB().then(function(response){
 						if (response == false) AddPersonToDB();
-						$scope.loadNotifs;
 						$location.path('/');
 					});
                 } else {
                     $scope.error = response.message;
+					console.log(response.message);
                     $scope.dataLoading = false;
 					$("#loginErrorCollapse").collapse("show");
                 }
             });
         };
+
+        $scope.getNotifs = function(username){
+			$http
+			.get(API_ENDPOINT.url + "/activity/notifications/" + username)
+			.then(function(response) {
+				$scope.myNotif = response.data;
+				console.log($scope.myNotif);
+			});
+		}
 
         $scope.logout = function () {
             AuthenticationService.ClearCredentials();
@@ -62,5 +73,5 @@ myApp.controller('loginController',
 			}
 		}
 		
-		CheckIfUserIsLoggedIn();
+		//CheckIfUserIsLoggedIn();
     }]);

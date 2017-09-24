@@ -12,7 +12,7 @@
 <!-- END PAGE TITLE -->                
 
 <!-- PAGE CONTENT WRAPPER -->
-<div class="page-content-wrap">
+<div class="page-content-wrap" ng-controller="starkAppCenterController">
     
     <div class="row">
         <div class="col-md-12">
@@ -27,7 +27,7 @@
                                     <div class="input-group-addon">
                                         <span class="fa fa-search"></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="What are you looking for?"/>
+                                    <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="searchString"/>
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary">Search</button>
                                     </div>
@@ -44,8 +44,8 @@
         </div>
     </div>
     
-    <div class="row-fluid" ng-controller="starkAppCenterController">
-        <div class="col-md-3" ng-repeat="app in myData" ng-cloak>
+    <div class="row-fluid">
+        <div class="col-md-3" ng-repeat="app in myData | searchFor:searchString" ng-cloak>
 		
             <!-- STARK APP ITEM -->
             <div class="panel panel-default">

@@ -22,7 +22,8 @@
             <div class="panel panel-default">
                 <div class="panel-body profile" ng-controller="starkAppPageController">
                     <div class="profile-image">
-                        <img src="assets/images/appicons/default icon (12).png"/>
+                        <img src="assets/images/appicons/{{ appData.icon.normalSizeLink }}"/>
+
                     </div>
                     <div class="profile-data">
                         <div class="profile-data-name">{{ appData.name }} </div>
@@ -91,13 +92,10 @@
                         <div class="post-text">                                            
                             <h4>Description</h4>
                             <p> 
-                                {{ appData.description }}
+                                {{ appData.text }}
                             </p>
                             <h4>How to use</h4>
-                            <p>
-
-                            </p>
-                            
+                                
                         </div>
                     </div>                                            
                        

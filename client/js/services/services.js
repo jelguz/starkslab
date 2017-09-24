@@ -3,16 +3,21 @@
 myApp.factory('AuthenticationService',
     ['$http', '$cookieStore', '$rootScope', '$timeout', 'API_ENDPOINT',
     function ( $http, $cookieStore, $rootScope, $timeout, API_ENDPOINT) {
-        var service = {};
- 
-        service.Login = function (username, password, callback) {
- 
-            $http.post(API_ENDPOINT.url + '/login', { "id": username, "password": password })
-               .then(function (response) {
-                   callback(response);
-               });
- 
-        };
+      var service = {};
+		
+      service.Login = function (username, password, callback) {
+        $http({
+            method: 'POST',
+            url: API_ENDPOINT.url + '/login',
+            data: { 'id': username, 'password': password },
+            headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
+          })
+        .then(function successCallback(response) {
+          callback(response);
+        }, function errorCallback(response) {
+          callback(response);
+        });
+      };
   
         service.SetCredentials = function (username, successfulLogin, firstName, lastName, email) {
             var authdata = successfulLogin;
@@ -45,11 +50,34 @@ myApp.factory('AuthenticationService',
         };
 
         service.addRating = function (tool_id, user_id, rating, review, callback) {
-            $http.post(API_ENDPOINT.url + '/tools/rate' , {"toolId" : tool_id, "user" : { "id" : user_id } , "rating" : rating, "text" : review })
-           .then(function (response) {
-               callback(response);
-           });
+          $http({
+              method: 'POST',
+              url: API_ENDPOINT.url + '/tools/review/add',
+              data: {"toolId" : tool_id, "user" : { "id" : user_id } , "rating" : rating, "text" : review },
+              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
+            })
+          .then(function successCallback(response) {
+            callback(response);
+          }, function errorCallback(response) {
+            callback(response);
+          });
+
         };
   
+        service.updateRating = function (tool_id, user_id, rating, review, callback) {
+          $http({
+              method: 'POST',
+              url: API_ENDPOINT.url + '/tools/review/update',
+              data: {"toolId" : tool_id, "user" : { "id" : user_id } , "rating" : rating, "text" : review },
+              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
+            })
+          .then(function successCallback(response) {
+            callback(response);
+          }, function errorCallback(response) {
+            callback(response);
+          });
+
+        };
+
         return service;
     }]);

@@ -59,6 +59,9 @@ app.get('/groupPage', function(req, res){
 app.get('/faq', function(req, res){
 	res.render('index.ejs');
 });
+app.get('/starkAppIncubator', function(req, res){
+	res.render('index.ejs');
+});
 
 app.listen(port, function(){
 	console.log('SERVER RUNNING... PORT: ' + port)

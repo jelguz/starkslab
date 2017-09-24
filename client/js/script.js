@@ -11,7 +11,11 @@ var myApp = angular.module('myApp', [
     'ngCookies'
 ]);
 
-myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
+
+	//$httpProvider.defaults.useXDomain = true;
+     //   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+	 //$httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 	$routeProvider
 
@@ -73,6 +77,11 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
 		.when('/starkApp', {
 			templateUrl : 'partials/starkAppPage.html',
 			controller  : 'starkAppPageController'
+		})
+
+		.when('/starkAppIncubator', {
+			templateUrl : 'partials/starkAppIncubator.html',
+			controller  : 'starkAppIncubatorController'
 		})
 
 		 // .otherwise({ redirectTo: '/login' })
