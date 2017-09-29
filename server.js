@@ -62,6 +62,9 @@ app.get('/faq', function(req, res){
 app.get('/starkAppIncubator', function(req, res){
 	res.render('index.ejs');
 });
+app.get('/starkAppCreate', function(req, res){
+	res.render('index.ejs');
+});
 
 app.listen(port, function(){
 	console.log('SERVER RUNNING... PORT: ' + port)

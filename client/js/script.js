@@ -84,6 +84,11 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
 			controller  : 'starkAppIncubatorController'
 		})
 
+		.when('/starkAppCreate', {
+			templateUrl : 'partials/starkAppCreate.html',
+			controller  : 'starkAppCreateController'
+		})
+
 		 // .otherwise({ redirectTo: '/login' })
 		 ;
 
