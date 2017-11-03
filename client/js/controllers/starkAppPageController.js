@@ -4,7 +4,7 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 
 	$scope.loadPage = function () {
 		$http
-		.get(API_ENDPOINT.url + "/tools/get/list/" + $scope.appId)
+		.get(API_ENDPOINT.url + "/tools/get/" + $scope.appId)
 		.then(function(response) {
 	    	$scope.appData = response.data;
 
@@ -18,7 +18,7 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 
 		function downloadExistsInDB(){
 			var deferred = $q.defer();
-			$http.get(API_ENDPOINT.url + '/tools/download/get/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
+			$http.get(API_ENDPOINT.url + '/tools/download/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
 			.then(function(response){
 				if (response.data.length == 0) {
 					deferred.resolve(false);
@@ -54,7 +54,7 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 
     function reviewExistsInDB(){
 			var deferred = $q.defer();
-			$http.get(API_ENDPOINT.url + '/tools/review/get/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
+			$http.get(API_ENDPOINT.url + '/tools/get/review/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
 			.then(function(response){
 				if (response.data.length == 0) {
 					deferred.resolve(false);

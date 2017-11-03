@@ -85,10 +85,8 @@
                 <div class="panel-body">                                    
                     <div class="contact-info">
                         <p><small>Description</small><br/> {{ app.description }} </p>
-                        <p><small>Downloads</small><br/> {{ app.downloads }} </p>
-                        <p><small>Rating</small></p>     
-                       
-                        <ng-rate-it ng-model="app.rating" step="0.10" read-only="true" resetable="false"></ng-rate-it>
+                        <p><small>Downloads</small><br/> {{ app.downloadCount }} </p>
+                        <p><small>Rating</small><br/> {{ app.ratingAverage }} </p>                                      
                     </div>
                 </div>    
                 
@@ -112,3 +110,4 @@
     <!-- END CONTENT FRAME BODY -->
 </div>               
 <!-- END CONTENT FRAME -->
+                

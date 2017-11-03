@@ -52,8 +52,8 @@ myApp.factory('AuthenticationService',
         service.addRating = function (tool_id, user_id, rating, review, callback) {
           $http({
               method: 'POST',
-              url: API_ENDPOINT.url + '/tools/review/add',
-              data: {"toolId" : tool_id, "user" : { "id" : user_id } , "rating" : rating, "text" : review },
+              url: API_ENDPOINT.url + '/tools/rate',
+              data: {"id" : tool_id, "personId" : user_id , "rating" : rating, "text" : review  },
               headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
             })
           .then(function successCallback(response) {
@@ -68,7 +68,7 @@ myApp.factory('AuthenticationService',
           $http({
               method: 'POST',
               url: API_ENDPOINT.url + '/tools/review/update',
-              data: {"toolId" : tool_id, "user" : { "id" : user_id } , "rating" : rating, "text" : review },
+              data: {"id" : tool_id, "personId" : user_id , "rating" : rating, "text" : review },
               headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
             })
           .then(function successCallback(response) {

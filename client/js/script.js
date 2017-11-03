@@ -8,7 +8,8 @@ var myApp = angular.module('myApp', [
     'Authentication',
     'Home',
     'ngRoute',
-    'ngCookies'
+    'ngCookies',
+    'ngRateIt'
 ]);
 
 myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
