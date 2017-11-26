@@ -18,13 +18,9 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 
 		function downloadExistsInDB(){
 			var deferred = $q.defer();
-			$http.get(API_ENDPOINT.url + '/tools/download/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
+			$http.get(API_ENDPOINT.url + '/tools/checkdownload/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
 			.then(function(response){
-				if (response.data.length == 0) {
-					deferred.resolve(false);
-				} else { 
-					deferred.resolve(true);
-				}
+				deferred.resolve(response.data);
 			});
 			return deferred.promise;
 		}
@@ -44,8 +40,10 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 	                }
 	            });
 
+			} else if (response == true) {
+				alert("Download started. Download count is not incremented.");
 			} else {
-				alert("Download started. You have already downloaded this app version before and download count is not incremented");
+				alert("Error");
 			}
 			
 		});
