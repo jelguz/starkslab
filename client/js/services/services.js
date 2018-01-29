@@ -10,7 +10,7 @@ myApp.factory('AuthenticationService',
             method: 'POST',
             url: API_ENDPOINT.url + '/login',
             data: { 'id': username, 'password': password },
-            headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
+            headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:81' }
           })
         .then(function successCallback(response) {
           callback(response);
@@ -54,7 +54,7 @@ myApp.factory('AuthenticationService',
               method: 'POST',
               url: API_ENDPOINT.url + '/tools/rate',
               data: {"id" : tool_id, "personId" : user_id , "rating" : rating, "text" : review  },
-              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
+              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:81' }
             })
           .then(function successCallback(response) {
             callback(response);
@@ -67,9 +67,9 @@ myApp.factory('AuthenticationService',
         service.updateRating = function (tool_id, user_id, rating, review, callback) {
           $http({
               method: 'POST',
-              url: API_ENDPOINT.url + '/tools/review/update',
+              url: API_ENDPOINT.url + '/tools/rate/update',
               data: {"id" : tool_id, "personId" : user_id , "rating" : rating, "text" : review },
-              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' }
+              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:81' }
             })
           .then(function successCallback(response) {
             callback(response);

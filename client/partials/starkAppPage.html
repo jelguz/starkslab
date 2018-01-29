@@ -13,16 +13,16 @@
 <!-- END PAGE TITLE -->                
 
 <!-- PAGE CONTENT WRAPPER -->
-<div class="page-content-wrap">
+<div class="content-frame">
     
-    <div class="row">
+    <div class="row super">
 	
-		<div class="col-md-3">
+		<div class="col-md-3" ng-controller="starkAppPageController">
             
             <div class="panel panel-default">
-                <div class="panel-body profile" ng-controller="starkAppPageController">
+                <div class="panel-body profile">
                     <div class="profile-image">
-                        <img src="assets/images/appicons/{{ appData.icon.normalSizeLink }}"/>
+                        <img check-app-image ng-src="assets/images/appicons/{{ appData.icon.normalSizeLink }}"/>
 
                     </div>
                     <div class="profile-data">
@@ -33,8 +33,8 @@
                     </div>                                  
                 </div>                                
                 <div class="panel-body list-group border-bottom">
-					<button class="btn btn-info btn-lg btn-block" ng-click="downloadApp()"><i class="fa fa-download"></i>DOWNLOAD</button>
-
+					<button class="btn btn-info btn-lg btn-block" ng-click="downloadApp()"><i ng-class="getIconClass(appData.type)"></i> {{ appData.formattedType }}</button>
+					
                     <button class="mb-control-rate btn btn-warning btn-lg btn-block" data-box="#mb-rate" href="#rate"><i class="fa fa-star"></i> RATE </button>
 
 					<p class="list-group-item" style="border:none;"> Downloads <span class="badge badge-default"> {{ appData.downloads }} </span></p>                           
@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="col-md-4 col-xs-4" ng-repeat="developer in appData.developers">
                             <a href="#" class="friend">
-                                <img src="assets/images/users/{{developer.id}}.jpg"/>
+                                <img check-image ng-src="assets/images/users/{{developer.id}}.png" alt="Image"/>
                                 <span>{{ developer.firstName }} {{ developer.lastName }}</span>
                             </a>                                            
                         </div>
@@ -103,7 +103,7 @@
                     <ul class="media-list" ng-repeat="review in appData.reviews">
                         <li class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object img-text" src="assets/images/users/{{review.user.id}}.jpg"  width="64">
+                                <img class="media-object img-text" check-image ng-src="assets/images/users/{{review.user.id}}.jpg"  width="64">
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading"> {{ review.user.firstName }} {{ review.user.lastName }} </h4>

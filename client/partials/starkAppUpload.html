@@ -1,0 +1,229 @@
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+    <li><a href="starkAppCenter">Home</a></li>
+    <li class="active"><a href="#">Upload your app!</a></li>
+</ul>
+<!-- END BREADCRUMB -->                                                 
+
+<!-- START CONTENT FRAME -->
+<div class="content-frame">   
+    
+    <!-- START CONTENT FRAME TOP -->
+    <div class="content-frame-top adjust10">        
+        <!-- PAGE TITLE -->
+        <div class="page-title">                    
+            <h2> <span class="glyphicon glyphicon-cloud-upload"></span> Upload your app!</h2>
+        </div>
+        <!-- END PAGE TITLE -->      
+    </div>
+    
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	
+	<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-default">                            
+				<div class="panel-body panel-body-image">
+					<img src="assets/images/ocean.jpg" alt="Ocean"/>
+					<a href="#" class="panel-body-inform">
+						<span class="fa fa-code"></span>
+					</a>
+				</div>
+				<div class="panel-body">
+					<h3>We're doing a lot of improvement and we'll let you know once its done</h3>
+					<p>The most innovative way of... is on your way. For the mean time, you may send your app using the form or send an email at starkslab@finastra.com</p>
+				</div>			
+			</div>
+			
+			<div class="panel panel-default">                            
+				<div class="panel-body panel-body-image">
+					<img src="assets/images/gallery/nature-5.jpg" alt="Ocean"/>
+					<a href="#" class="panel-body-inform">
+						<span class="fa fa-lightbulb-o"></span>
+					</a>
+				</div>
+				<div class="panel-body">
+					
+					<h3>Do you have an idea on your mind?</h3>
+					<p>If you have an idea for an app that can made our work easier, or you need a utility because of the... Share it with us, we'll be happy to know it. Who knows? There might be some developers who would want to make your ideas into an actual app.</p>
+				</div>
+				<div class="panel-footer">
+					<form class="form-horizontal" action="mailto:starkslab@finastra.com?subject=STARK'S APP WISH" method="post" enctype="text/plain">
+						<button class="btn btn-danger btn-block" type="submit"><span class="fa fa-edit"></span> COMPOSE</button>		
+					</form>
+				</div>
+			</div>
+		</div>
+	
+		<div class="col-md-8">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<img src="assets/images/users/{{globals.currentUser.username}}.jpg" alt="John Doe" class="panel-title-image"/>
+					<h3 class="panel-title">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}} <small style="text-transform: uppercase;">{{globals.currentUser.email}}</small></h3>
+				</div>
+				
+				<div class="panel-body">
+				<h4>Send your app here!</h4>
+				<p>Fill up this form to send your app. Your email will pop-up to review your entries before sending it to the Stark's Lab Team for review. Make sure to attach all the things needed on the email, especially the user manuals which will help the users of your app to use your app.</p>
+				</div>
+				
+				<form class="form-horizontal" action="mailto:starkslab@finastra.com?subject=[New Stark's App]" method="post" enctype="text/plain">
+					<input type="hidden" name="Sender " value="{{globals.currentUser.firstName}} {{globals.currentUser.lastName}} <{{globals.currentUser.email}}>"/>
+					<input type="hidden" name="Date " id="theDate"/>
+				
+					<div class="panel-body">								
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">App Name</label>
+							<div class="col-md-6 col-xs-12">    
+							<input type="text" name="App Name " class="form-control" value=" "/>
+							</div>
+						</div>
+					
+						
+						<div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Developers</label>
+                                        <div class="col-md-6 col-xs-12">                                                                                             
+                                            <input type="text" name="Developers " class="tagsinput" value="Developer1, Developer2"/>
+                                        </div>
+                                    </div>
+						
+						<div class="form-group">                                        
+							<label class="col-md-3 col-xs-12 control-label">Date Created</label>
+							<div class="col-md-6 col-xs-12">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+									<input type="text" class="form-control datepicker" value="2018-01-01" name="Date Created ">                                            
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">Description</label>
+							<div class="col-md-6 col-xs-12">                                            
+								<textarea name="Description " class="form-control" rows="2"></textarea>
+								<span class="help-block">Short description of your app </span>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">Text</label>
+							<div class="col-md-6 col-xs-12">                                            
+								<textarea class="form-control" rows="5" name="Text "></textarea>
+								<span class="help-block">Detailed description of your app</span>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">How to use</label>
+							<div class="col-md-6 col-xs-12">                                            
+								<textarea class="form-control" rows="5" name="How to use "></textarea>
+								<span class="help-block">Detailed instructions on how to use your app</span>
+							</div>
+						</div>
+						
+						<!--div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">Kind of app</label>
+							<div class="col-md-6 col-xs-12">                                                                                            
+								<select id="colorselector" class="form-control select" name="Kind of App">
+									<option value="Downloadable">Downloadable</option>
+									<option value="Website">Website</option>
+								</select>
+								<span class="help-block">For apps that are in your machines or environments which are not downloadable nor accessible on a browser, please create a manual for your app and choose "Downloadable"</span>
+							</div>
+						</div-->
+						
+						<style>
+						#Website {
+							display: none;
+							
+						}
+						input[value=" Website"]:checked ~ #Website {
+							display: block;
+						}
+						</style>
+						
+						<label class="col-md-3 col-xs-12 control-label">Kind of app</label>
+						<input id="colorselector" type="radio" name="Kind of App " value=" Downloadable"/> Downloadable
+						<br/>
+						<input id="colorselector" type="radio" name="Kind of App " value=" Website"/> Website
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label"></label>
+							<div class="col-md-6 col-xs-12"> 
+								<span class="help-block">For apps that are in your machines or environments which are not downloadable nor accessible on a browser, please create a manual for your app and choose "Downloadable"</span>
+							</div>
+						</div>
+							
+						
+						<div id="Website" class="form-group"><!--class="colors form-group" style="display: none;"--> 
+							<label class="col-md-3 col-xs-12 control-label">URL</label>
+							<div class="col-md-6">
+								<input name="URL " type="text" class="form-control" value=" "/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="panel-footer">							
+						<input class="btn btn-default" type="reset" value="Clear">
+						<button type="submit" class="btn btn-warning pull-right"><span class="glyphicon glyphicon-send"></span></span> SEND YOUR APP NOW</button>
+					</div>
+				</form>	
+			</div>		
+		</div> 
+	</div>
+	</div>
+</div>               
+<!-- END CONTENT FRAME -->
+
+	<!-- START SCRIPTS -->
+        <!-- THIS PAGE PLUGINS -->
+        <!--script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script-->
+        <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script>                
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js"></script>
+        <script type="text/javascript" src="js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+		
+		<script type='text/javascript' src='js/plugins/validationengine/languages/jquery.validationEngine-en.js'></script>
+        <script type='text/javascript' src='js/plugins/validationengine/jquery.validationEngine.js'></script>        
+
+        <script type='text/javascript' src='js/plugins/jquery-validation/jquery.validate.js'></script>                
+
+        <script type='text/javascript' src='js/plugins/maskedinput/jquery.maskedinput.min.js'></script>
+        <!-- END THIS PAGE PLUGINS -->       
+        
+        <!-- START TEMPLATE -->
+        <script type="text/javascript" src="js/settings.js"></script>
+        
+        <script type="text/javascript" src="js/plugins.js"></script>        
+        <script type="text/javascript" src="js/actions.js"></script>        
+        <!-- END TEMPLATE -->
+		
+		<script>
+			var date = new Date();
+
+			var day = date.getDate();
+			var month = date.getMonth() + 1;
+			var year = date.getFullYear();
+
+			if (month < 10) month = "0" + month;
+			if (day < 10) day = "0" + day;
+
+			var today = year + "-" + month + "-" + day;   
+			document.getElementById("theDate").value = today + "\n";
+		</script>
+		
+		<!--script>
+		$(function() {
+			$('#colorselector').change(function(){
+				$('.colors').hide();
+				$('#' + $(this).val()).show();
+			});
+		});
+        </script-->
+		
+    <!-- END SCRIPTS -->    
+

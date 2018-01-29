@@ -14,7 +14,7 @@
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
-        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css?version=7"/>
         <!-- EOF CSS INCLUDE -->   
 
         <base href="/">
@@ -26,42 +26,43 @@
         <div class="page-container">
             
             <!-- START PAGE SIDEBAR -->
-            <div class="page-sidebar" ng-show="globals.currentUser.authdata">
+            <div class="page-sidebar page-sidebar-fixed" ng-show="globals.currentUser.authdata">
             <nav ng-controller="navController">
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Stark's Lab</a>
+                        <a href="starkAppCenter">Stark's Lab</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
-                            <img src="assets/images/users/{{globals.currentUser.username}}.jpg"/>
+                            <img ng-src="assets/images/users/{{globals.currentUser.username}}.png" check-image />
                         </a>
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="assets/images/users/{{globals.currentUser.username}}.jpg"/>
+                                <img ng-src="assets/images/users/{{globals.currentUser.username}}.png" check-image />
                             </div>
-                            <div class="profile-data">
+                            <div class="profile-data-nav">
                                 <div class="profile-data-name">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}}</div>
                                 <div class="profile-data-title">Developer/Designer</div>
                             </div>
+							<!-- 
                             <div class="profile-controls">
                                 <a href="profileTimeline.html" class="profile-control-left"><span class="fa fa-info"></span></a>
                                 <a href="#" class="profile-control-right"><span class="fa fa-plus"></span></a>
                             </div>
+							 -->
                         </div>                                                                        
                     </li>
-					
-                    <li class="xn-title">Navigation</li>
-					
+
+					<!--
                     <li ng-class="{active: isActive('/')}">
                         <a href="/"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>          
                     </li>                    
-					
+					-->
 					<li ng-class="{active: isActive('/starkAppCenter')}"><a href="starkAppCenter"><span class="fa fa-caret-square-o-right"></span> <span class="xn-text">Stark App Center</a></li>
                     <li ng-class="{active: isActive('/starkAppIncubator')}"><a href="starkAppIncubator"><span class="fa fa-lightbulb-o"></span> <span class="xn-text">Stark App Incubator</a></li>
-					<li ng-class="{active: isActive('/starkGroups')}"><a href="starkGroups"><span class="fa fa-users"></span> <span class="xn-text">Stark Groups</a></li>
+					<!-- <li ng-class="{active: isActive('/starkGroups')}"><a href="starkGroups"><span class="fa fa-users"></span> <span class="xn-text">Stark Groups</a></li>
 					<li ng-class="{active: isActive('/newsFeed')}"><a href="newsFeed"><span class="fa fa-list-alt"></span> <span class="xn-text">News Feed</a></li>
 					
                     <li class="xn-openable">
@@ -75,7 +76,8 @@
 					
 					<li ng-class="{active: isActive('/faq')}"><a href="/faq"><span class="fa fa-question-circle"></span> <span class="xn-text">FAQ</a></li>
 					<li><a href=""><span class="fa fa-info"></span> <span class="xn-text">Credits</a></li>
-                    
+                     -->
+					<li ng-class="{active: isActive('/starkAppUpload')}"><a href="starkAppUpload"><span class="fa fa-upload"></span> <span class="xn-text">Upload your app!</a></li>
                 </ul>
                 <!-- END X-NAVIGATION -->
             </nav>
@@ -83,7 +85,7 @@
             <!-- END PAGE SIDEBAR -->
             
             <!-- PAGE CONTENT -->
-            <div class="page-content">
+            <div ng-class="getPageContainer()">
                 
                 <!-- START X-NAVIGATION VERTICAL -->
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel"  ng-show="globals.currentUser.authdata">
@@ -93,11 +95,12 @@
                     </li>
                     <!-- END TOGGLE NAVIGATION -->
                     <!-- SEARCH -->
-                    <li class="xn-search">
+                    <!-- 
+					<li class="xn-search">
                         <form role="form">
                             <input type="text" name="search" placeholder="Search..."/>
                         </form>
-                    </li>   
+                    </li>   -->
                     <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
@@ -105,21 +108,24 @@
                     </li> 
                     <!-- END SIGN OUT -->
                     <!-- NOTIFICATIONS -->
-                    <li class="xn-icon-button pull-right" ng-controller="loginController">
+                    <li class="xn-icon-button pull-right" ng-controller="navController">
                         <a href="#"><span class="fa fa-bell"></span></a>
-                        <div class="informer informer-danger" ng-model="notifCount"> {{ myNotif.length }} </div>
+                        <div class="informer informer-danger" ng-if="newNotif > 0 " ng-model="notifCount"> {{ newNotif }} </div>
                         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-bell"></span> Notifications</h3>   <div class="pull-right">
-                                    <span class="label label-danger">{{ myNotif.length }} new</span>
+                                <h3 class="panel-title"><span class="fa fa-bell"></span> Notifications</h3>   
+								<div class="pull-right" ng-if="newNotif > 0 "> 
+                                    <span class="label label-danger">{{ newNotif }} new</span>
                                 </div>
                             </div>
                             <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-                                <a href="#" class="list-group-item"  ng-repeat="notifs in myNotif" ng-cloak>
-                                    <div class="list-group-status status-online"></div>
-                                    <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
-                                    <span class="contacts-title">{{ notifs.originatorId}}</span>
-                                    <p>{{ notifs.actionType }}ed <b> {{ notifs.itemId }} </b></p>
+                                <a ng-repeat="notifs in myNotif"  ng-click="seen(notifs.developer, notifs.newsfeedId, notifs.toolId)" href='/starkApp?id={{notifs.toolId}}' ng-class="getNotificationClass(notifs.isSeen)"  ng-cloak>
+                                    <img ng-src="assets/images/users/{{ notifs.originator}}.jpg" class="pull-left" check-image />
+                                    <span class="contacts-title">{{ notifs.originatorFirstName}} {{ notifs.originatorLastName}} <small class="pull-right">{{ notifs.activityDate }} </small></span>
+                                    <p ng-if="notifs.type == 'DOWNLOAD'">Downloaded <b> {{ notifs.toolName }} </b></p>
+									<p ng-if="notifs.type == 'REVIEW'">Rated <b> {{ notifs.toolName }} </b> {{ notifs.rating }} stars</p>
+                                    <p ng-if="notifs.type == 'WISHERS'">Upvoted <b> {{ notifs.toolName }} </b></p>
+									
                                 </a>
                             </div>     
                             <div class="panel-footer text-center">
@@ -197,6 +203,9 @@
         <script src="../js/controllers/faqController.js"></script>
         <script src="../js/controllers/loginController.js"></script>
 		<script src="../js/controllers/starkAppCreateController.js"></script>
+		<script src="../js/controllers/starkAppUploadController.js"></script>
+		<script src="../js/controllers/starkAppIncubatorController.js"></script>
+		<script src="../js/controllers/starkAppAddConceptController.js"></script>
 
         <script src="../js/services/services.js"></script>
         <script src="../js/constants.js"></script>

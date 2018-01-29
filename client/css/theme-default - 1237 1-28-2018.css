@@ -107,7 +107,7 @@ body {
   width: 50px;
 }
 .page-container .page-content {
-  height: 100%;
+  min-height: 100%;
   margin-left: 220px;
   background: #f5f5f5 url('../img/bg.png') left top repeat;
   position: relative;
@@ -217,7 +217,10 @@ body {
   width: 100%;
 }
 
-
+.page-container .page-content .page-content-wrap {
+  float: left;
+  width: 100%;
+}
 .page-container.page-container-wide .page-content {
   margin-left: 50px;
   -webkit-transition: all 200ms ease;
@@ -1287,17 +1290,17 @@ body.page-container-boxed .page-container {
 }
 .list-group .list-group-item { /* Mark */
   line-height: 20px;
-}
-.list-group .list-group-item-unseen {
-  background: #d5d5d5;
-  	 -webkit-transition: background 500ms ease-in-out;
+    -webkit-transition: background 500ms ease-in-out;
   -moz-transition: background 400ms ease-in-out;
   -ms-transition: background 400ms ease-in-out;
   -o-transition: background 400ms ease-in-out;
   transition: background 400ms ease-in-out; 
 }
-.list-group .list-group-item-unseen:hover{
+.list-group .list-group-item .a:hover{
   background: #fff;
+}
+.list-group .list-group-item-unseen {
+  background: #d5d5d5;
 }
 .list-group .list-group-item .fa {
   margin-right: 10px;

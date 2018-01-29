@@ -89,6 +89,16 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
 			templateUrl : 'partials/starkAppCreate.html',
 			controller  : 'starkAppCreateController'
 		})
+		
+		.when('/starkAppUpload', {
+			templateUrl : 'partials/starkAppUpload.html',
+			controller  : 'starkAppUploadController'
+		})
+		
+		.when('/starkAppAddConcept', {
+			templateUrl : 'partials/starkAppAddConcept.html',
+			controller  : 'starkAppAddConceptController'
+		})
 
 		 // .otherwise({ redirectTo: '/login' })
 		 ;

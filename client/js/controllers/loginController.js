@@ -3,20 +3,20 @@
 myApp.controller('loginController',
     ['$scope', '$rootScope', '$location', 'AuthenticationService', '$http', 'API_ENDPOINT', '$q',
     function ($scope, $rootScope, $location, AuthenticationService, $http, API_ENDPOINT, $q) {
-    	    	
-        $scope.login = function () {
+
+	$scope.login = function () {
             // reset login status
             AuthenticationService.ClearCredentials();
             $scope.dataLoading = true;
             AuthenticationService.Login($scope.username, $scope.password, function(response) {
                 if(response.data.successfulLogin == true) {
-                	$scope.getNotifs($scope.username);
+                	$rootScope.getNotifs($scope.username);
 
                     AuthenticationService.SetCredentials(response.data.id, response.data.successfulLogin, 
                         response.data.firstName, response.data.lastName, response.data.email);
 					PersonExistsInDB().then(function(response){
 						if (response == false) AddPersonToDB();
-						$location.path('/');
+						$location.path('/starkAppCenter');
 					});
                 } else {
                     $scope.error = response.message;
@@ -25,8 +25,10 @@ myApp.controller('loginController',
 					$("#loginErrorCollapse").collapse("show");
                 }
             });
+
         };
 
+		/*
         $scope.getNotifs = function(username){
 			$http
 			.get(API_ENDPOINT.url + "/activity/notifications/" + username)
@@ -34,7 +36,7 @@ myApp.controller('loginController',
 				$scope.myNotif = response.data;
 				console.log($scope.myNotif);
 			});
-		}
+		}*/
 
         $scope.logout = function () {
             AuthenticationService.ClearCredentials();
@@ -68,10 +70,11 @@ myApp.controller('loginController',
 		}
 		
 		function CheckIfUserIsLoggedIn(){
-			if ($rootScope.globals.currentUser != undefined && $rootScope.globals.currentUser || null) {
-				$location.path('/');
+			if (($rootScope.globals.currentUser != undefined || $rootScope.globals.currentUser != null) && $location.path() == '/login') {
+				$location.path('/starkAppCenter');
 			}
 		}
 		
-		//CheckIfUserIsLoggedIn();
+		CheckIfUserIsLoggedIn();
+		
     }]);
