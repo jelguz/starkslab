@@ -20,13 +20,16 @@ myApp.controller('navController', ['$scope','$http', 'API_ENDPOINT' ,'$rootScope
 		
 	}
 	
-	$rootScope.seen = function(username, newsfeedId, toolId){
+	$rootScope.seen = function(username, newsfeedId, toolId, type){
 		console.log(API_ENDPOINT.url + "/activity/notification/seen/" + username + "/" + newsfeedId);
 		$http
 		.get(API_ENDPOINT.url + "/activity/notification/seen/" + username + "/" + newsfeedId)
 		.then(function(response) {
 			$scope.seenResponse = response.data;
-			//$location.path('/starkApp?id=' + toolId);
+			if(type === "WISHERS")
+				$location.path('/starkAppIncubator');
+			else
+				$location.path('/starkApp').search('id', toolId);
 			console.log($scope.seenResponse);
 		});
 	}

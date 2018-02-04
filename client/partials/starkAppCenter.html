@@ -70,7 +70,9 @@
 				<a href="starkApp?id={{ app.id }}">
 					<div class="panel-body profile">
 						<div class="profile-image">
-							<img src="assets/images/appicons/{{ app.icon.normalSizeLink }}"/>
+							<!--<img ng-src="assets/images/appicons/{{ app.icon.normalSizeLink }}" check-image/> -->
+							  <img check-app-image ng-if="app.icon.normalSizeLink != null" ng-src="assets/images/appicons/{{ app.icon.normalSizeLink }}" alt="Image"/>
+								<img check-app-image ng-if="app.icon.normalSizeLink == null" ng-src="assets/images/appicons/NoPicture.png" alt="Image"/>
 						</div>
 						
 							<div class="profile-data">

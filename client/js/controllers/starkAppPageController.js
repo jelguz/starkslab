@@ -1,13 +1,16 @@
-myApp.controller('starkAppPageController', function($scope, $location, API_ENDPOINT, $http, AuthenticationService, $rootScope, $q) {
+myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$location', 'API_ENDPOINT','AuthenticationService', '$rootScope', '$http', function($scope, $q, $timeout, $location, API_ENDPOINT,AuthenticationService, $rootScope, $http){
+    'use strict';
+
 
 	$scope.appId = $location.search().id; 
+
 
 	$scope.loadPage = function () {
 		$http
 		.get(API_ENDPOINT.url + "/tools/get/" + $scope.appId)
 		.then(function(response) {
 	    	$scope.appData = response.data;
-
+			console.log(response.data);
 	    	//TODO make this date formatter a seperate global function
 			var st = $scope.appData.updateDate;
 			var pattern = /(\d{4})(\d{2})(\d{2})/;
@@ -25,27 +28,26 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 			}
 			$scope.appData.formattedType = instruction;
 			
-			
-				});
-			};
+		});
+	};
 		
-		$scope.getIconClass = function (type) {
-		  if(type == "link")
-			  return 'fa fa-external-link';
-		  else if (type == "file")
-			  return 'fa fa-cloud-download';
-		  else
-			  return 'fa fa-book';
-		}
-		
-		function downloadExistsInDB(){
-			var deferred = $q.defer();
-			$http.get(API_ENDPOINT.url + '/tools/checkdownload/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
-			.then(function(response){
-				deferred.resolve(response.data);
-			});
-			return deferred.promise;
-		}
+	$scope.getIconClass = function (type) {
+	  if(type == "link")
+		  return 'fa fa-external-link';
+	  else if (type == "file")
+		  return 'fa fa-cloud-download';
+	  else
+		  return 'fa fa-book';
+	};
+	
+	function downloadExistsInDB(){
+		var deferred = $q.defer();
+		$http.get(API_ENDPOINT.url + '/tools/checkdownload/' + $scope.appId + '/' + $rootScope.globals.currentUser.username)
+		.then(function(response){
+			deferred.resolve(response.data);
+		});
+		return deferred.promise;
+	}
 			
 
     $scope.downloadApp = function () {
@@ -67,56 +69,37 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 			} else {
 				alert("Error");
 			}
-			
 		});
     	
     };
 	
 	    //Veejay start (DOWNLOAD)
+		/*
     	$scope.downloadApp1 = function () {
 		
-		$http
-		.get(API_ENDPOINT.url + "/tools/get/currentversion/" + $scope.appId)
-		.then(function(response) {
-			
-			$scope.dlLink = response.data.downloadLink;
-			console.log("DOWNLOAD 1")
-			if ($scope.dlLink != undefined) 
-				{
-					alert("Download Started");
-					window.location.href =  $scope.dlLink;
-					$scope.loadPage();
-					console.log("DOWNLOAD START")
-				} else {
-					alert("Unable to download, file not available");
-					console.log("DOWNLOAD END")
-				}
-
-    });
-	
-	/*
-	 $scope.getImage = function(username) { 
-			console.log('ASD');
-			if(isImageExists(username))
-				return 'assets/images/users/' + username + '.png';
-			else
-				return 'assets/images/users/noimage.png';
-		};
-		
-		
-		function isImageExists(username){
-			//console.log(username);
-			$http.get('assets/images/users/' + username + '.png')
-			.done(function(){
-				return true;
+			$http
+			.get(API_ENDPOINT.url + "/tools/get/currentversion/" + $scope.appId)
+			.then(function(response) {
 				
-			}).fail(function(){
-				return false;
-			});
-		}*/
-		
-};
+				
+				$scope.dlLink = response.data.downloadLink;
+				console.log("DOWNLOAD 1")
+				if ($scope.dlLink != undefined) 
+					{
+						alert("Download Started");
+						window.location.href =  $scope.dlLink;
+						$scope.loadPage();
+						console.log("DOWNLOAD START")
+					} else {
+						alert("Unable to download, file not available");
+						console.log("DOWNLOAD END")
+					}
 
+		});
+		};*/
+	
+
+	
 
 	//Veejay end (DOWNLOAD)
 
@@ -133,6 +116,20 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 			return deferred.promise;
 		}
 
+		
+	function addMirec(username, text){
+			var deferred = $q.defer();
+			$http.get("http://mirecognition/apirest.php?acc=STARKSLAB&pass=1e4ks6s30Hks7Ma54aae092jdbchT7151&toUser="+username+"&text="+text+"&points=+1&page=")
+			.then(function(response){
+				if (response.data.length == 0) {
+					deferred.resolve(false);
+				} else { 
+					deferred.resolve(true);
+				}
+			});
+		
+			
+		}
 
 
     $scope.rateApp = function () {
@@ -144,6 +141,10 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 
 				        if(response.data == true) {
 				            alert("Thanks for rating!");
+							// add mirecognition points
+							for(var i=0;i <= $scope.appData.developers.length; i++) {
+								//addMirec($scope.appData.developers[i].id, $rootScope.globals.currentUser.firstName + " rated " + $scope.appData.name + " and wrote a review: " + $scope.userReview);
+							}
 				            $scope.loadPage();
 				        } else {
 				            $scope.error = response.message;
@@ -173,7 +174,34 @@ myApp.controller('starkAppPageController', function($scope, $location, API_ENDPO
 
     	
     };
+	
+	/*
+	$scope.linkExist = function () {
+		console.log($scope.appId + "Mark pogi"); 
+		$http
+		.get(API_ENDPOINT.url + "/tools/get/currentversion/" + $scope.appId)
+		.then(function(response) {
+				//if(response.data.length > 0)
+					return response.data.length;
+				//else 
+				//	return false;
+			//console.log(response.data);
+			});
 
+    };*/
+	
+	
+	$http
+		.get(API_ENDPOINT.url + "/tools/get/currentversion/" + $scope.appId)
+		.then(function(response) {
+			if (response.data)
+				$scope.isExists = true;
+			else
+				$scope.isExists = false;
+			//console.log($scope.isExists)
+		});
+	//console.log($scope.dlLink.downloadLink);
+	
     $scope.loadPage();
-
-});
+}
+]); 

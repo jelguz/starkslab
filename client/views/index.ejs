@@ -31,7 +31,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="starkAppCenter">Stark's Lab</a>
+                        <a href="starkAppCenter"><div class="starksIcon"></div><span class="iconText">Stark's Lab</span></a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-                                <a ng-repeat="notifs in myNotif"  ng-click="seen(notifs.developer, notifs.newsfeedId, notifs.toolId)" href='/starkApp?id={{notifs.toolId}}' ng-class="getNotificationClass(notifs.isSeen)"  ng-cloak>
+                                <a ng-repeat="notifs in myNotif"  ng-click="seen(notifs.developer, notifs.newsfeedId, notifs.toolId, notifs.type)"  ng-class="getNotificationClass(notifs.isSeen)"  ng-cloak>
                                     <img ng-src="assets/images/users/{{ notifs.originator}}.jpg" class="pull-left" check-image />
                                     <span class="contacts-title">{{ notifs.originatorFirstName}} {{ notifs.originatorLastName}} <small class="pull-right">{{ notifs.activityDate }} </small></span>
                                     <p ng-if="notifs.type == 'DOWNLOAD'">Downloaded <b> {{ notifs.toolName }} </b></p>

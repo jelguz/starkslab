@@ -1,8 +1,8 @@
 'use strict';
   
 myApp.factory('AuthenticationService',
-    ['$http', '$cookieStore', '$rootScope', '$timeout', 'API_ENDPOINT',
-    function ( $http, $cookieStore, $rootScope, $timeout, API_ENDPOINT) {
+    ['$http', '$cookieStore', '$rootScope', '$timeout', 'API_ENDPOINT', '$location',
+    function ( $http, $cookieStore, $rootScope, $timeout, API_ENDPOINT, $location) {
       var service = {};
 		
       service.Login = function (username, password, callback) {
@@ -77,6 +77,50 @@ myApp.factory('AuthenticationService',
             callback(response);
           });
 
+        };
+		
+		service.addTool = function (name, desc, stat, author, category, callback) {
+          $http({
+              method: 'POST',
+              url: API_ENDPOINT.url + '/tools/add/idea',
+              data: {"name" : name, "description" : desc , "status" : stat, "ideaAuthor" :  author},
+              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:81' }
+            })
+          .then(function successCallback(response) {
+            callback(response);
+			console.log(response.data + " " + category) ;
+			
+			service.addToolCategory(response.data, category, 
+			function(response) {
+				if(response.data == true) {
+				    alert("concept wee!");
+					$location.path('/starkAppIncubator');
+				} else {
+				    $scope.error = response.message;
+				    $scope.dataLoading = false;
+				    alert("concept no");
+				}
+				    
+			});
+			
+			
+          }, function errorCallback(response) {
+            callback(response);
+          });
+        };
+		
+		service.addToolCategory = function (toolId, category, callback) {
+          $http({
+              method: 'POST',
+              url: API_ENDPOINT.url + '/tools/add/category',
+              data: {"toolId": toolId, "categoryId": category},
+              headers: {  'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:81' }
+            })
+          .then(function successCallback(response) {
+            callback(response);
+          }, function errorCallback(response) {
+            callback(response);
+          });
         };
 
         return service;

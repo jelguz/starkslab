@@ -45,12 +45,26 @@ myApp.controller('starkAppIncubatorController', function($scope, $q, $timeout, A
 		
 		//** Get All items on first load
 		$http
-		.get(API_ENDPOINT.url + "/tools/getall/idea")
+		.get(API_ENDPOINT.url + "/tools/getall/idea" + "/" + $rootScope.globals.currentUser.username)
 		.then(function(response) {
 			$scope.myData = response.data;
 			$scope.allItemsCount = $scope.myData.length;
 			console.log(response.data);
 		});
+		
+		function isVote(id){
+			var deferred = $q.defer();
+			$http.get(API_ENDPOINT.url + "/tools/get/checkupvote/" + $rootScope.globals.currentUser.username + "/" + id)
+			.then(function(response){
+				if (response.data.length == 0) {
+					console.log(reponse.data + "XXX");
+					deferred.resolve(false);
+				} else { 
+					deferred.resolve(true);
+				}
+			});
+			return deferred.promise;
+		}
 		
 		//**************************** Filter Category ****************************************
 		
@@ -58,28 +72,41 @@ myApp.controller('starkAppIncubatorController', function($scope, $q, $timeout, A
 		//** A dynamic category was selected, go get a new list by request
 		$scope.goCategory = function(category) { 
 				$http
-				.get(API_ENDPOINT.url + "/tools/get/category/" + category + "/idea")
+				.get(API_ENDPOINT.url + "/tools/get/category/" + category + "/idea/"+ $rootScope.globals.currentUser.username)
 				.then(function(response) {
 					$scope.myData = response.data;
+					for(var i =0; i<$scope.myData.length; i++){
+						$scope.myData[i].isVoted = allowUpvote($scope.myData[i].id);
+						console.log($scope.myData[i].isVoted);
+					}
 					console.log(response.data);
 				});
 				$scope.currentCategory = category;
 		};
 		
+			$scope.isUpvote = function (isVoted) {
+					console.log(isVoted);
+					if (isVoted == false)
+						return "btn btn-info btn-block";
+					else
+						return "btn btn-info btn-block disabled";
+
+		}
 		
 		$scope.upvote = function (id) {
 			$http
 					.get(API_ENDPOINT.url + "/tools/upvote/" + id + "/"+ $rootScope.globals.currentUser.username)
 					.then(function(response) {
-						$scope.myData = response.data;
-						alert(response.data);
+						//$scope.myData = response.data;
+						$scope.goAllCategory();
+						console.log(response.data);
 					});
 		}
 		
 		//** All Category was selected, go get a new list by request
 		$scope.goAllCategory = function() { 
 				$http
-				.get(API_ENDPOINT.url + "/tools/getall/idea")
+				.get(API_ENDPOINT.url + "/tools/getall/idea/"+ $rootScope.globals.currentUser.username)
 				.then(function(response) {
 					$scope.myData = response.data;
 					console.log(response.data);

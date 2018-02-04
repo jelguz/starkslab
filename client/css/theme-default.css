@@ -364,6 +364,7 @@ body.page-container-boxed .page-container {
   font-weight: 400;
   padding: 12px 10px;
   border-bottom-color: #121418;
+  border-bottom-color: #121418;
 }
 .x-navigation li > ul li > a:hover {
   background: #121418;
@@ -1287,6 +1288,7 @@ body.page-container-boxed .page-container {
 }
 .list-group .list-group-item { /* Mark */
   line-height: 20px;
+  cursor: pointer;
 }
 .list-group .list-group-item-unseen {
   background: #d5d5d5;
@@ -3955,7 +3957,7 @@ background: #1caf9a !important;
 
 .conceptTitle{ /*echo temp*/
 	overflow: hidden;
-	height: 150px;
+	height: 55px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -3963,10 +3965,48 @@ background: #1caf9a !important;
 
 .conceptDesc{ /*echo temp*/
 	overflow: hidden;
-	height: 100px;
+	height: 200px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.starksIcon{ 
+	position: absolute;
+	background: url("../img/starks-logo-small-noglow.png");
+	/*background-image: url("../img/starks-logo-small-noglow.png") float left fixed;*/
+	height: 50px;
+	width: 50px;
+	margin-left: -12px;
+	margin-top: -14px;
+	background-size: cover;
+	-webkit-transition: all 600ms ease-in-out;
+  -moz-transition: all 600ms ease-in-out;
+  -ms-transition: all 600ms ease-in-out;
+  -o-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
+	
+}
+
+.starksIcon:hover{ 
+	 transform: rotate(360deg);
+	position: absolute;
+	background: url("../img/starks-logo-small.png");
+	/*background-image: url("../img/starks-logo-small-noglow.png") float left fixed;*/
+	height: 50px;
+	width: 50px;
+	margin-left: -12px;
+	margin-top: -14px;
+	background-size: cover;
+	-webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.iconText{
+	margin-left: 25px;
 }
 
 .contact-info p {
