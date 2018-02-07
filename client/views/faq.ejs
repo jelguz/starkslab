@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html  ng-app="myApp" lang="en" class="body-full-height">
+    <head>        
+        <!-- META SECTION -->
+        <title>Stark's Lab</title>                 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="../css/jquery/animate.css" rel="stylesheet">
+        <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" type="text/css" id="theme" href="css/faq.css"/>
+        <!-- EOF CSS INCLUDE -->                                    
+</head>
+<body>
+         
+
+
+<div class='wrapper'>
+  <div class='iron-man-wrapper'>
+    <div class='tony-stark'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Tony_Stark.svg'>
+    </div>
+
+    <div class='arc-reactor'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Arc_Reactor.svg'>
+    </div>
+
+    <div class='iron-man-helmet'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Iron_Man_Helmet.svg'>
+    </div>
+
+    <div class='iron-man-left-arm'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Iron_Man_Left_Arm.svg'>
+      <div class='flame-left-hand'>
+      </div>
+    </div>
+
+    <div class='iron-man-right-arm'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Iron_Man_Right_Arm.svg'>
+      <div class='flame-right-hand'>
+      </div>
+    </div>
+
+    <div class='iron-man-left-leg'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Iron_Man_Left_Leg.svg'>
+      <div class='flame-left-leg'>
+      </div>
+    </div>
+
+    <div class='iron-man-right-leg'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Iron_Man_Right_Leg.svg'>
+      <div class='flame-right-leg'>
+      </div>
+    </div>
+
+    <div class='iron-man-chest'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/651105/Iron_Man_Chest.svg'>
+    </div>
+  </div>
+  <div class='shadow'>
+  </div>
+  <div class = "goback" style="margin-top: 35vh;margin-left: 3px;cursor:pointer;font-size: 1em;"><a>Go back to login page.</a></div>
+  <span class = "emailText" style="position: absolute; margin-top: 5vh; margin-left: -70px; width: 500px;">Email us at starkslab@misys.com for queries</span>
+  <span class = "emailText" style="position: absolute; margin-top: 8vh; margin-left: -15px; width: 500px;font-size: .8em;">*or you may contact Jelene Guzman</span>
+</div>
+
+		 
+	 <script type="text/javascript" src="../js/plugins/jquery/jquery.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script type="text/javascript" src="../js/plugins/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery/velocity.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery/jquery.fittext.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery/jquery.lettering.js"></script>
+	<script type="text/javascript" src="../js/plugins/jquery/jquery.textillate.js"></script>
+	
+		<script>
+		$( document ).ready(function() {
+			$('.goback').textillate({ in: { effect: 'fadeInDown', sync: true}, out: { effect: 'fadeOutDown', sync: true}, autoStart: true, loop: false});
+			//$('.goback').textillate({ in: { effect: 'fadeInLeftBig', sync: false}, out: { effect: 'fadeOutRight', sync: true}, autoStart: true});
+			$('.emailText').textillate({ in: { effect: 'fadeInUp', sync: true}, out: { effect: 'fadeOutDown', sync: true}, autoStart: true, loop: false});
+			//$('.goback').textillate('in'); 
+		});
+		
+		$('.goback').on( "click", function() {
+			location.href = '/login';
+		});
+	</script>
+ </body>
+</html>
+
+
