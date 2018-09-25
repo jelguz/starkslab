@@ -9,7 +9,8 @@ var myApp = angular.module('myApp', [
     'Home',
     'ngRoute',
     'ngCookies',
-    'ngRateIt'
+    'ngRateIt',
+	'ngSanitize'
 ]);
 
 myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {

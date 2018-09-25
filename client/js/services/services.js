@@ -93,12 +93,11 @@ myApp.factory('AuthenticationService',
 			service.addToolCategory(response.data, category, 
 			function(response) {
 				if(response.data == true) {
-				    alert("concept wee!");
-					$location.path('/starkAppIncubator');
+				    alert("Info: Concept was submitted!");
 				} else {
-				    $scope.error = response.message;
-				    $scope.dataLoading = false;
-				    alert("concept no");
+				    //$scope.error = response.message;
+				    //$scope.dataLoading = false;
+				    //alert("Error: " + $scope.error);
 				}
 				    
 			});

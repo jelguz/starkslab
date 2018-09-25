@@ -8,7 +8,7 @@
 
 <!-- PAGE TITLE -->
 <div class="page-title">                    
-    <h2><span class="fa fa-arrow-circle-o-left"></span> Stark App</h2>
+    <h2><span class="fa fa-rocket"></span> Stark App</h2>
 </div>
 <!-- END PAGE TITLE -->                
 
@@ -38,7 +38,7 @@
 					
                     <button class="mb-control-rate btn btn-warning btn-lg btn-block" data-box="#mb-rate" href="#rate"><i class="fa fa-star"></i> RATE </button>
 
-					<p class="list-group-item" style="border:none;"> Downloads <span class="badge badge-default"> {{ appData.downloads }} </span></p>                           
+					<p class="list-group-item" style="border:none;"> {{appAction}}s <span class="badge badge-default"> {{ appData.downloads }} </span></p>                           
                     <p class="list-group-item" style="border:none;"> Rating <span class="badge badge-default"> {{ appData.rating }} </span></p>        
 				
 				
@@ -91,20 +91,21 @@
                             </span> 
                         </div>
                         <div class="post-text">                                            
-                            <h4>Description</h4>
-                            <p> 
-                                {{ appData.text }}
-                            </p>
-                            <h4>How to use</h4>
+                            <h3>Description</h3>
+							<p ng-bind-html="appData.text || appData.description"> </p>
+                     
+                            <h3 ng-if="appData.instructions.length > 0">How to use</h3>
+							<p ng-bind-html="appData.instructions"> </p>
                                 
                         </div>
                     </div>                                            
                        
-                    <h3 class="push-down-20">Reviews</h3>
-                    <ul class="media-list" ng-repeat="review in appData.reviews">
+                    <h3 class="push-down-20" >Reviews</h3>
+					    <p ng-if="appData.reviews.length == null"  class="text-muted"> This app has no reviews yet. Be the first one to leave a review! </p>
+						<ul class="media-list" ng-repeat="review in appData.reviews">
                         <li class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object img-text" check-image ng-src="assets/images/users/{{review.user.id}}.jpg"  width="64">
+                                <img class="media-object img-text" check-image ng-src="assets/images/users/{{review.user.id}}.png"  width="64">
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading"> {{ review.user.firstName }} {{ review.user.lastName }} </h4>
@@ -134,7 +135,7 @@
                         <div class="form-group">
 
                             <div class="col-md-1 col-md-offset-3">                                    
-                                <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="1" required/> 1 </label>
+                                <label class="check"><input type="radio"  checked="checked" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="1" /> 1 </label>
                             </div>
                             <div class="col-md-1">                                    
                                 <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="2"/> 2 </label>
@@ -149,7 +150,7 @@
                                 <label class="check"><input type="radio" class="iradio" name="iradio" data-ng-model="userRating" data-ng-value="5"/> 5 </label>
                             </div>
 
-                            <textarea class="form-control" placeholder="Write a review (Optional)" rows="1" data-ng-model="userReview"></textarea> 
+                            <textarea id="rateTextBox" class="form-control" placeholder="Write a review" rows="4" data-ng-model="userReview" maxlength="1000"></textarea> 
                             
                         </div>
                     </div>

@@ -34,7 +34,7 @@
 				</div>
 				<div class="panel-body">
 					<h3>We're doing a lot of improvements and we'll let you know once its done</h3>
-					<p>The most innovative way of... is on your way. For the mean time, you may send your app using the form or send an email at starkslab@misys.com</p>
+					<p>The most innovative way of sharing ideas and apps is on your way. For the mean time, you may send your app using the form or send us an email at starkslab@misys.com</p>
 				</div>			
 			</div>
 			
@@ -48,11 +48,11 @@
 				<div class="panel-body">
 					
 					<h3>Do you have an idea on your mind?</h3>
-					<p>If you have an idea for an app that can made our work easier, or you need a utility because of the... Share it with us, we'll be happy to know it. Who knows? There might be some developers who would want to make your ideas into an actual app.</p>
+					<p>If you have an idea for an app that can made our work easier, a concept for process improvements or gamifications: Share it with us! There might be some developers who would want to make your ideas into reality.</p>
 				</div>
 				<div class="panel-footer">
-					<form class="form-horizontal" action="mailto:starkslab@finastra.com?subject=STARK'S APP WISH" method="post" enctype="text/plain">
-						<button class="btn btn-danger btn-block" type="submit"><span class="fa fa-edit"></span> COMPOSE</button>		
+					<form class="form-horizontal" >
+						<button class="btn btn-success btn-block" ng-click="go('/starkAppAddConcept')"><span class="fa fa-edit"></span> SUBMIT AN IDEA NOW!</button>
 					</form>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 		<div class="col-md-8">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<img src="assets/images/users/{{globals.currentUser.username}}.jpg" alt="John Doe" class="panel-title-image"/>
+					<img ng-src="assets/images/users/{{globals.currentUser.username}}.png" check-image alt="Image" class="panel-title-image"/>
 					<h3 class="panel-title">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}} <small style="text-transform: uppercase;">{{globals.currentUser.email}}</small></h3>
 				</div>
 				
@@ -70,7 +70,7 @@
 				<p>Fill up this form to send your app. Your email will pop-up to review your entries before sending it to the Stark's Lab Team for review. Make sure to attach all the things needed on the email, especially the user manuals which will help the users of your app to use your app.</p>
 				</div>
 				
-				<form class="form-horizontal" action="mailto:starkslab@finastra.com?subject=[New Stark's App]" method="post" enctype="text/plain">
+				<form class="form-horizontal" action="mailto:starkslab@misys.com?subject=[New Stark's App]" method="post" enctype="text/plain">
 					<input type="hidden" name="Sender " value="{{globals.currentUser.firstName}} {{globals.currentUser.lastName}} <{{globals.currentUser.email}}>"/>
 					<input type="hidden" name="Date " id="theDate"/>
 				
@@ -90,15 +90,28 @@
                                         </div>
                                     </div>
 						
-						<div class="form-group">                                        
-							<label class="col-md-3 col-xs-12 control-label">Date Created</label>
-							<div class="col-md-6 col-xs-12">
-								<div class="input-group">
-									<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-									<input type="text" class="form-control datepicker" value="2018-01-01" name="Date Created ">                                            
-								</div>
+						<div class = "form-group">
+							<label class="col-md-3 col-xs-12 control-label">Category</label>
+							<div class="col-md-6 col-xs-12">    
+							<div class="dropdown">
+							  <input type="hidden" name="Category " id="category"  value="{{defaultCategory}}"/>
+							  <button class="btn dropdown-toggle dropdowntext" type="button" data-toggle="dropdown" data-ng-model="category" > {{ defaultCategory }}
+							  <span class="caret"></span></button>
+							  <ul class="dropdown-menu">
+								<li  ng-repeat="category in listCategories" ng-click="setCategory(category.id)" ><a href="#">{{category.name}}</a></li>
+							  </ul>
 							</div>
-						</div>
+							</div>
+							<script>
+							$(function(){
+								$(".dropdown-menu").on('click', 'li a', function(){
+								  $(".dropdowntext").text($(this).text());
+								  $(".dropdowntext").val($(this).text());
+								  $("#category").val($(this).text());
+							   });
+							});
+							</script>
+						</div> 
 						
 						<div class="form-group">
 							<label class="col-md-3 col-xs-12 control-label">Description</label>

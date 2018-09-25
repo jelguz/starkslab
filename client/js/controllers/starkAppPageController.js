@@ -10,7 +10,7 @@ myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$locati
 		.get(API_ENDPOINT.url + "/tools/get/" + $scope.appId)
 		.then(function(response) {
 	    	$scope.appData = response.data;
-			console.log(response.data);
+			//console.log(response.data);
 	    	//TODO make this date formatter a seperate global function
 			var st = $scope.appData.updateDate;
 			var pattern = /(\d{4})(\d{2})(\d{2})/;
@@ -21,10 +21,13 @@ myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$locati
 			var instruction;
 			if (dt == "file") {
 				instruction = "DOWNLOAD";
+				$scope.appAction = "Download";
 			} else if (dt == "link") {
 				instruction = "VISIT WEBSITE";
+				$scope.appAction = "Visit";
 			} else {
 				instruction = "DOWNLOAD MANUAL";
+				$scope.appAction = "Download";
 			}
 			$scope.appData.formattedType = instruction;
 			
@@ -55,17 +58,19 @@ myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$locati
 			if (response == false) {
 				AuthenticationService.addDownloadCount($scope.appId, $rootScope.globals.currentUser.username, function(response) {
 	                if(response.data == true) {
-	                    alert("Download started");
+	                    //alert("Download started");
+						ftpDownload();
 	                    $scope.loadPage();
 	                } else {
 	                    $scope.error = response.message;
 	                    $scope.dataLoading = false;
-	                    alert("Unable to download");
+	                    alert("Unable to " + $scope.appAction);
 	                }
 	            });
 
 			} else if (response == true) {
-				alert("Download started. Download count is not incremented.");
+				alert("Info: You have already " + $scope.appAction.toLowerCase() + "ed this app, " + $scope.appAction.toLowerCase() + " count will not be incremented.");
+				ftpDownload();
 			} else {
 				alert("Error");
 			}
@@ -74,8 +79,8 @@ myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$locati
     };
 	
 	    //Veejay start (DOWNLOAD)
-		/*
-    	$scope.downloadApp1 = function () {
+		
+    	function ftpDownload() {
 		
 			$http
 			.get(API_ENDPOINT.url + "/tools/get/currentversion/" + $scope.appId)
@@ -83,11 +88,10 @@ myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$locati
 				
 				
 				$scope.dlLink = response.data.downloadLink;
-				console.log("DOWNLOAD 1")
 				if ($scope.dlLink != undefined) 
 					{
-						alert("Download Started");
 						window.location.href =  $scope.dlLink;
+						//window.open($scope.dlLink,'_blank');
 						$scope.loadPage();
 						console.log("DOWNLOAD START")
 					} else {
@@ -96,7 +100,7 @@ myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$locati
 					}
 
 		});
-		};*/
+		};
 	
 
 	
@@ -142,8 +146,15 @@ myApp.controller('starkAppPageController', ['$scope', '$q', '$timeout', '$locati
 				        if(response.data == true) {
 				            alert("Thanks for rating!");
 							// add mirecognition points
-							for(var i=0;i <= $scope.appData.developers.length; i++) {
-								//addMirec($scope.appData.developers[i].id, $rootScope.globals.currentUser.firstName + " rated " + $scope.appData.name + " and wrote a review: " + $scope.userReview);
+							if ($scope.userReview == null){
+								for(var i=0;i <= $scope.appData.developers.length; i++) {
+									addMirec($scope.appData.developers[i].id, $rootScope.globals.currentUser.firstName + " rated " + $scope.appData.name + " " + $scope.userRating + " stars.");
+								}
+							}
+							else{
+								for(var i=0;i <= $scope.appData.developers.length; i++) {
+									addMirec($scope.appData.developers[i].id, $rootScope.globals.currentUser.firstName + " rated " + $scope.appData.name  + " " + $scope.userRating+ " stars" + " and wrote a review: " + $scope.userReview);
+								}
 							}
 				            $scope.loadPage();
 				        } else {

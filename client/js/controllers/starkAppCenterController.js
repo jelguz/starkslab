@@ -87,7 +87,7 @@ myApp.controller('starkAppCenterController', ['$scope', '$q', '$timeout', 'API_E
 		.get(API_ENDPOINT.url + "/categories/get/listdetails/live")
 		.then(function(response) {
 			$scope.listCategories = response.data;
-			console.log(response.data);
+			//console.log(response.data);
 		});
 		
 		//** Get All items on first load
@@ -96,7 +96,7 @@ myApp.controller('starkAppCenterController', ['$scope', '$q', '$timeout', 'API_E
 		.then(function(response) {
 			$scope.myData = response.data;
 			$scope.allItemsCount = $scope.myData.length;
-			console.log(response.data);
+			//console.log(response.data);
 		});
 		
 		//**************************** Filter Category ****************************************
@@ -108,7 +108,7 @@ myApp.controller('starkAppCenterController', ['$scope', '$q', '$timeout', 'API_E
 				.get(API_ENDPOINT.url + "/tools/get/category/" + category + "/live")
 				.then(function(response) {
 					$scope.myData = response.data;
-					console.log(response.data);
+					//console.log(response.data);
 				});
 				$scope.currentCategory = category;
 		};
@@ -119,7 +119,7 @@ myApp.controller('starkAppCenterController', ['$scope', '$q', '$timeout', 'API_E
 				.get(API_ENDPOINT.url + "/tools/getall/live")
 				.then(function(response) {
 					$scope.myData = response.data;
-					console.log(response.data);
+					//console.log(response.data);
 				});
 				$scope.currentCategory = 0;
 		};

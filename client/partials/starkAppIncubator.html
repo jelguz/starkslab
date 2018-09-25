@@ -85,7 +85,8 @@
 						<button class="btn btn-warning btn-block">Concept</button>
 						<div class="conceptItem panel-body panel-body-pricing">
 							<h2 class="conceptTitle">{{ app.name }}<br/><small>{{ removeLastChar(app.categoryString) }}</small></h2>
-							<p class="conceptDesc"><span class="fa fa-caret-right"></span> {{ app.description | limitTo: 150 }}{{app.description.length > 150 ? '...' : ''}}</p>
+							<p class="conceptDesc"><span class="fa fa-caret-right"></span> {{ app.description}}</p>
+							<!--<p class="text-muted">Idea Author: {{app.ideaAuthor}} </p>-->
 							<div class="col-md-12">                                
 								<button ng-class="isUpvote(app.voted)" ng-click="upvote(app.id)"><span class="fa fa-arrow-up"></span>Upvote</button>
 							</div>

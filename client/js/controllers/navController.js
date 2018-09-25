@@ -10,7 +10,7 @@ myApp.controller('navController', ['$scope','$http', 'API_ENDPOINT' ,'$rootScope
 		.get(API_ENDPOINT.url + "/activity/notifications/" + username)
 		.then(function(response) {
 			$scope.myNotif = response.data;
-			console.log($scope.myNotif);
+			//console.log($scope.myNotif);
 			for (var i=0; i < $scope.myNotif.length; i++){		
 				if ($scope.myNotif[i].isSeen == 0){
 					$scope.newNotif = $scope.newNotif + 1;
@@ -21,7 +21,7 @@ myApp.controller('navController', ['$scope','$http', 'API_ENDPOINT' ,'$rootScope
 	}
 	
 	$rootScope.seen = function(username, newsfeedId, toolId, type){
-		console.log(API_ENDPOINT.url + "/activity/notification/seen/" + username + "/" + newsfeedId);
+		//console.log(API_ENDPOINT.url + "/activity/notification/seen/" + username + "/" + newsfeedId);
 		$http
 		.get(API_ENDPOINT.url + "/activity/notification/seen/" + username + "/" + newsfeedId)
 		.then(function(response) {

@@ -19,15 +19,13 @@ myApp.controller('starkAppAddConceptController', ['$scope', '$q', '$timeout', '$
 		AuthenticationService.addTool($scope.conceptName, $scope.conceptDesc, 
 			$scope.defaultStatus, $rootScope.globals.currentUser.username, $scope.selectedcategory , 
 			function(response) {
-				if(response.data == true) {
-				    alert("Thanks for adding your concept!");
-									console.log($scope.conceptStat);
-
+				if(response.data) {
+					//Success - Continue
 					$location.path('/starkAppIncubator');
 				} else {
 				    $scope.error = response.message;
 				    $scope.dataLoading = false;
-				    alert("Unable to add concept");
+				    alert("Error: Unable to add concept");
 				}
 				    
 			});
